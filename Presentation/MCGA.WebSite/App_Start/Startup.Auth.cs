@@ -54,15 +54,15 @@ namespace MCGA.WebSite
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+              appId: "2158795061047243",
+              appSecret: "1172c091791480858829f927f8c62057");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "61991917083-3r1163mfiiljogfjjimd1p13hfei72jt.apps.googleusercontent.com",
+                ClientSecret = "Py40UCX9tZiPF18cLme52KEO"
+            });
         }
     }
 }

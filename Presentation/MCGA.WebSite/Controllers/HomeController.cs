@@ -6,6 +6,8 @@ using System.Web.Mvc;
 
 namespace MCGA.WebSite.Controllers
 {
+    [RequireHttps]
+    [Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()
