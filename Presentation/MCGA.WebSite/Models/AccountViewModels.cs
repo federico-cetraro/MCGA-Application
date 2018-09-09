@@ -6,8 +6,12 @@ namespace MCGA.WebSite.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
+        [EmailAddress]
         [Display(Name = "Correo electrónico")]
         public string Email { get; set; }
+
+        public string HomeTown { get; set; }
+        public System.DateTime? BirthDate { get; set; }
     }
 
     public class ExternalLoginListViewModel
