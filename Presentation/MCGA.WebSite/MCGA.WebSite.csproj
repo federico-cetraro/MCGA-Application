@@ -169,8 +169,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AfiliadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TipoEspecialidadController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -286,6 +288,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Afiliado\Create.cshtml" />
+    <Content Include="Views\Afiliado\Delete.cshtml" />
+    <Content Include="Views\Afiliado\Details.cshtml" />
+    <Content Include="Views\Afiliado\Edit.cshtml" />
+    <Content Include="Views\Afiliado\Index.cshtml" />
+    <Content Include="Views\TipoEspecialidad\Create.cshtml" />
+    <Content Include="Views\TipoEspecialidad\Delete.cshtml" />
+    <Content Include="Views\TipoEspecialidad\Details.cshtml" />
+    <Content Include="Views\TipoEspecialidad\Edit.cshtml" />
+    <Content Include="Views\TipoEspecialidad\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -305,6 +317,28 @@
     <EmbeddedResource Include="Migrations\201809092116356_Init.resx">
       <DependentUpon>201809092116356_Init.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Business\MCGA.Business\MCGA.Business.csproj">
+      <Project>{8b16f38f-32f0-4b6c-848a-404014161af2}</Project>
+      <Name>MCGA.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\MCGA.Data\MCGA.Data.csproj">
+      <Project>{21a72d4e-4480-4453-a9a4-e2458b84e7f7}</Project>
+      <Name>MCGA.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Shared\MCGA.Entities\MCGA.Entities.csproj">
+      <Project>{9cc9e395-4e72-47fc-9f03-c1ca9e69261d}</Project>
+      <Name>MCGA.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Shared\MCGA.Framework\MCGA.Framework.csproj">
+      <Project>{81cf6df1-4e5a-4fb8-9b3a-791b9f09c51d}</Project>
+      <Name>MCGA.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MCGA.UI.Process\MCGA.UI.Process.csproj">
+      <Project>{8dce9c31-1356-475e-bb8e-fe16554b4be0}</Project>
+      <Name>MCGA.UI.Process</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
