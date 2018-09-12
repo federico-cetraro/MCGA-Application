@@ -11,15 +11,32 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using MCGA.WebSite.Models;
+using System.Net.Mail;
 
 namespace MCGA.WebSite
 {
+    /*Clase SMTP para configurar el envio atraves de GMAIL*/
     public class EmailService : IIdentityMessageService
     {
-        public Task SendAsync(IdentityMessage message)
+        public async Task SendAsync(IdentityMessage message)
         {
-            // Conecte su servicio de correo electrónico aquí para enviar correo electrónico.
-            return Task.FromResult(0);
+
+            MailMessage email = new MailMessage(new MailAddress("noreply@ProyectoMCGA2018.com", "(Por favor, confirmar el mail recibido. NO responder a esta casilla)"),
+                new MailAddress(message.Destination));
+
+            email.Subject = message.Subject;
+            email.Body = message.Body;
+
+            email.IsBodyHtml = true;
+
+            using (var mailClient = new GmailEmailService())
+            {
+                //In order to use the original from email address, uncomment this line:
+                //email.From = new MailAddress(mailClient.UserName, "(do not reply)");
+
+                await mailClient.SendMailAsync(email);
+            }
+
         }
     }
 

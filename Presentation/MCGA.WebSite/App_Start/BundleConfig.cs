@@ -24,7 +24,7 @@ namespace MCGA.WebSite
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap.min-doctor.css",
                       "~/Content/site.css"));
         }
     }
