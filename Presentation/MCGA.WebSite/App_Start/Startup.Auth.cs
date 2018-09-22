@@ -54,9 +54,9 @@ namespace MCGA.WebSite
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            app.UseFacebookAuthentication(
-              appId: "2158795061047243",
-              appSecret: "1172c091791480858829f927f8c62057");
+             app.UseFacebookAuthentication(
+             appId: "2158795061047243",
+             appSecret: "1172c091791480858829f927f8c62057");
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {

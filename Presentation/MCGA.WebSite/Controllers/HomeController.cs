@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace MCGA.WebSite.Controllers
 {
-    [RequireHttps]
+    
     
     public class HomeController : Controller
     {

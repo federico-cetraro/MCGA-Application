@@ -1,17 +1,76 @@
-﻿@{
-    ViewBag.Title = "Contact";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿
+<p class="text-center w-responsive mx-auto mb-5">
+    <h1>Preguntas?</h1>
+    <h2>Contactenos y le responderemos a la brevedad.</h2>
+</p>
 
+<img src="~/Content/Imagenes/banner-contacto.jpg" alt="Banner-Contacto"/>
+
+<div class="row">
+
+    <!--Grid column-->
+    <div class="col-md-9 mb-md-0 mb-5">
+        <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+
+            <!--Grid row-->
+            <div class="row">
+
+                <!--Grid column-->
+                <div class="col-md-6">
+                    <div class="md-form mb-0">
+                        <label for="name" class="">Su Nombre</label>
+                        <input type="text" id="name" name="name" class="form-control">
+                    </div>
+                </div>
+                <!--Grid column-->
+                <!--Grid column-->
+                <div class="col-md-6">
+                    <div class="md-form mb-0">
+                        <label for="email" class="">Email</label>
+                        <input type="text" id="email" name="email" class="form-control">
+                    </div>
+                </div>
+                <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
+            <!--Grid row-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="md-form mb-0">
+                        <label for="subject" class="">Motivo de Contacto</label>
+                        <input type="text" id="subject" name="subject" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <!--Grid row-->
+            <!--Grid row-->
+            <div class="row">
+
+                <!--Grid column-->
+                <div class="col-md-12">
+
+                    <div class="md-form">
+                        <label for="message">Su Mensaje</label>
+                        <textarea type="text" id="message" name="message" rows="3" class="form-control md-textarea"></textarea>
+                    </div>
+
+                </div>
+                
+            <!--Grid row-->
+            </div>
+        </form>
+
+        <div class="text-center text-md-left">
+            <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Enviar Consulta</a>
+        </div>
+        <div class="status"></div>
+    </div>
+    <!--Grid column-->
+</div>
 <address>
-    Clinica de Embarazos de Riesgo<br />
+    Clinica de Embarazos de Riesgo Dr. Erick Rosenkratzs<br />
     Boulogne, San Isidro<br />
-    <abbr title="Telefono">P:</abbr>
+    <abbr title="Telefono">Tel.:</abbr>
     4512-0025
-</address>
-
-<address>
-    <strong>Consultas:</strong>   <a href="mailto:Support@example.com">consultas@clinicaembarazos.com</a><br />
-    <strong>Especialistas:</strong> <a href="mailto:Marketing@example.com">especialistas@clinicaembarazos.com</a>
 </address>

@@ -5,44 +5,57 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
-    
+    <title>@ViewBag.Title - Federico A. Cetraro 2018 MCGA</title>
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script async src="//platform-api.sharethis.com/js/sharethis.js#property=5ba6ac2770388d001124964d&product=" sticky-share-buttons"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126266877-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-126266877-1');
+    </script>
 
 </head>
 <body>
-    
-    <div class="navbar navbar-default">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Clinica Especialista en Embarazos de Riesgo. Dr. Erick Rosekratzs", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Navegar"></button>
+            <div class="collapse navbar-collapse" id="navbarToggler">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item item-principal"><a class="nav-link" href="/Home/Index">Inicio</a></li>
+                    <li class="nav-item item-principal"><a class="nav-link" href="/Home/About">Nosotros</a></li>
+                    <li class="nav-item item-principal"><a class="nav-link" href="/Home/Contact">Contacto</a></li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
-    </div>
+    </nav>
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - MCGA 2018 - Proyecto Federico A. Cetraro</p>
+            <a href="https://www.facebook.com/cetraromcga2018" class="fa fa-facebook"></a>
+            <a href="https://twitter.com/mcga2018turnos" class="fa fa-twitter"></a>
+            <a href="https://plus.google.com/u/0/103688756495357548158" class="fa fa-google"></a>
+            <a href="https://ar.linkedin.com/in/federico-adrian-cetraro/" class="fa fa-linkedin"></a>
+            <a href="https://www.youtube.com/channel/UCX9RVdHdDNP7gdlQtLeN9Vg" class="fa fa-youtube"></a>
+            <a href="https://www.instagram.com/mcga2018turnos/" class="fa fa-instagram"></a>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    @RenderSection("Modal", required: false)
+    
 </body>
 </html>

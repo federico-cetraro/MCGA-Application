@@ -2,169 +2,109 @@
     ViewBag.Title = "Home Page";
 }
 
+<link href="~/Content/Carousel.css" rel="stylesheet" />
 
-@section scripts{
+<div id="carouselPrincipal" class="carousel slide" data-ride="carousel" data-interval="3000">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselPrincipal" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselPrincipal" data-slide-to="1"></li>
+        <li data-target="#carouselPrincipal" data-slide-to="2"></li>
+        <li data-target="#carouselPrincipal" data-slide-to="3"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block" src="~/Content/Imagenes/institucion.jpg" alt="Institucion">
+            <div class="carousel-caption d-none d-md-block">
+                @Html.Partial("_ButtonCarrousel")
+                <h1>Nuestra Institucion</h1>
+                <p>Somos una institucion que cuenta con los mas altos estandares para atenderlo en el proceso del embarazo</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="d-block" src="~/Content/Imagenes/historial.jpg" alt="Historial Embarazo">
+            <div class="carousel-caption d-none d-md-block">
+                @Html.Partial("_ButtonCarrousel")
+                <h1>Historial de Embarazo</h1>
+                <p>En la institucion acompañamos a la apreja a lo largo de todo el proceso de embarazo mediante un historial actualizado</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="d-block" src="~/Content/Imagenes/pastis.jpg" alt="Farmacia Institucion">
+            <div class="carousel-caption d-none d-md-block">
+                @Html.Partial("_ButtonCarrousel")
+                <h1>Farmacia especializada en institucion</h1>
+                <p>Nuestra institucion cuenta con una farmacia especializada para embarazos que cumple con estandares internacionales</p>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<!-- Marketing messaging and featurettes
+================================================== -->
+<!-- Wrap the rest of the page in another container to center all the content. -->
+
+<div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+        <div class="col-lg-4">
+            <img class="rounded-circle" src="~/Content/Imagenes/member2.jpg" alt="Dra. Carla" width="140" height="140">
+            <h2>Especialista Carla</h2>
+            <p>La doctora Carla se especializo en la Universidad de Londres en metodos de salvaguardar embarazos geneticamente complejos.</p>
+
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <img class="rounded-circle" src="~/Content/Imagenes/member3.jpg" alt="Dr. Hector" width="140" height="140">
+            <h2>Especialista Hector</h2>
+            <p>El doctor Hector realizo su especiaidad en la rama de atencion prenatal para atender a sus pacientes bajo los más altos estandares medicos internacionales.</p>
+
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <img class="rounded-circle" src="~/Content/Imagenes/member4.jpg" alt="Dr. Jorge" width="140" height="140">
+            <h2>Especialista Jorge</h2>
+            <p>El doctor Joge obtuvo su maestria en atencion ginecologica de la Universidad de Columbia con inclinacion en embarazos complejos.</p>
+
+        </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">Esta instucion cuenta con un centro de<span class="text-muted">investigacion garantizando los ultimos avances para embarazos.</span></h2>
+            <p class="lead">Para brindar la mejor atencion a nuestros pacientes, invertimos en tecnicas y especialistas año a año.</p>
+        </div>
+        <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" src="~/Content/Imagenes/investigacion.jpg" alt="Investigacion">
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">Queremos estar cerca de nuestros pacientes <span class="text-muted">por eso contamos con multiples maneras de contactarnos.</span></h2>
+            <p class="lead">Usted podra contactarse con nuestra institucion a traves de multiples canales.</p>
+        </div>
+        <div class="col-md-5 order-md-1">
+            <img class="featurette-image img-fluid mx-auto" src="~/Content/Imagenes/descarga.jpg" alt="Contactenos">
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+</div><!-- /.container -->
+
+@Html.Partial("_NosMudamos")
+@section Scripts{
     <script type="text/javascript">
-        $(window).on('load', function () {
-            $('#myModal').modal('show');
-        });
-    </script>
-    <script>
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
-        })
-    </script>
-    <script>
         $(document).ready(function () {
-            // Activate Carousel
-            $("#myCarousel").carousel();
-
-            // Enable Carousel Indicators
-            $(".item1").click(function () {
-                $("#myCarousel").carousel(0);
-            });
-            $(".item2").click(function () {
-                $("#myCarousel").carousel(1);
-            });
-            $(".item3").click(function () {
-                $("#myCarousel").carousel(2);
-            });
-            $(".item4").click(function () {
-                $("#myCarousel").carousel(3);
-            });
-
-            // Enable Carousel Controls
-            $(".left").click(function () {
-                $("#myCarousel").carousel("prev");
-            });
-            $(".right").click(function () {
-                $("#myCarousel").carousel("next");
-            });
+            // Handler for .ready() called.
+            $("#nosMudamos").modal('show');
         });
     </script>
 }
-
-<div class="container">
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">SU ATENCION POR FAVOR!</h4>
-                </div>
-                <div class="modal-body">
-                    <p>
-                        Estimados pacientes, les informamos que a partir del proximo 10 de Octubre los consultorios de Obstetricia y Fertilización comenzarán a atender en las
-                        nuevas instalaciones en Cordoba 2457. Paulatinamente, iremos mudando todos los servicios que presta la institución.
-                        Disculpen las molestias ocasionadas. Atte., Dirección.
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button data-toggle="tooltip" data-placement="top" title="HACIENDO CLICK EN EL BOTON DELEGO LA RESPONSABILIDAD DE PERJUICIOS" type="button" class="btn btn-default" data-dismiss="modal">Entendido</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-</div>
-
-
-<style>
-    .carousel-inner > .item > img,
-    .carousel-inner > .item > a > img {
-        width: auto;
-        margin: auto;
-    }
-</style>
-
-<div class="container">
-    <div id="myCarousel" class="carousel slide">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li class="item1 active"></li>
-            <li class="item2"></li>
-            <li class="item3"></li>
-            <li class="item4"></li>
-        </ol>
-
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner" role="listbox">
-
-            <div class="item active">
-                <img src="https://bestdoctors.com/wp-content/uploads/2016/11/Doctor-with-Tablet.jpg" alt="Dr. Hipolito" width="460" height="345">
-                <div class="carousel-caption">
-                    <h3>Dr. Hipolito</h3>
-                    <p>Dirige la cinica desde sus inicios. Trabajo in Fertilization Society, Estados Unidos.</p>
-                </div>
-            </div>
-
-            <div class="item">
-                <img src="https://www.cheatsheet.com/wp-content/uploads/2017/10/A-doctor-talking-to-a-patient.jpg" alt="Dra. Estefania" width="460" height="345">
-                <div class="carousel-caption">
-                    <h3>Dra. Estefania</h3>
-                    <p>Magister en obstetricia de la universidad de London Medics, Inglaterra.</p>
-                </div>
-            </div>
-
-            <div class="item">
-                <img src="http://elperiodistadetresarroyos.com/wp-content/uploads/2014/05/doctorhannoi-800x531.jpg" alt="Dr. Carlos" width="460" height="345">
-                <div class="carousel-caption">
-                    <h3>Dr. Carlos</h3>
-                    <p>Especialista en ginecologia de la Universidad de Buenos Aires con posgrado en la Universitätsmedizin, Alemania .</p>
-                </div>
-            </div>
-
-            <div class="item">
-                <img src="http://arteriasyvenas.com/wp-content/uploads/2016/09/doctora.jpg" alt="Dra. Carla" width="460" height="345">
-                <div class="carousel-caption">
-                    <h3>Dra. Carla</h3>
-                    <p>
-                        Jefa de supervision en asistencia a embarazos de riesgo,
-                        investigadora a cargo de la Recherche avancée en fertilisation pour les cas de grossesse à risque, Francia.
-                    </p>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Left and right controls -->
-        <a class="left carousel-control" href="#myCarousel" role="button">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" role="button">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Nuestras Especializaciones</h2>
-        <p>
-            Contamos con un plantel altamente calificado capaz de brindar asesoramiento a las pacientes y/o médicos de cabecera en la atención del embarazo de alto riesgo. Ej: diabetes, embarazo múltiple, hipertensión arterial y embarazo, pre eclampsia, retardo de crecimiento fetal intrauterino; enfermedades clínicas o quirúrgicas maternas previas o aparecidas durante el embarazo que pueden complicarlo.
-        </p>
-        <p><a data-toggle="tooltip" data-placement="top" title="Técnicas que utilizamos" class="btn btn-default" href="">Aprenda Más &raquo;</a></p>
-    </div>
-    <div tooltip="Acerquese a nuestra institución para conocer más" class="col-md-4">
-        <h2>Historia del Instituto</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p><a data-toggle="tooltip" data-placement="top" title="LOREM IPSUM" class="btn btn-default" href="">Lorem Ipsum &raquo;</a></p>
-    </div>
-    
-    <div class="col-md-4">
-        <h2>Conozca más sobre el futuro de la fertilización asistida</h2>
-        <p>La reproducción asistida puede ser llevada a cabo empleando diferentes técnicas y la más adecuada a emplear dependerá de las circunstancias y problemas particulares de cada pareja. Sin embargo la secuencia de técnicas a emplear, de menos a más compleja e invasiva, es la siguiente: coitos programados, inseminación artificial y fecundación in vitro/transferencia de embriones.</p>
-        <p><a data-toggle="tooltip" data-placement="top" title="Obtenga más información con un click" class="btn btn-default" href="https://www.huesped.org.ar/informacion/derechos-sexuales-y-reproductivos/tus-derechos/fertilidad-asistida/">Sitio &raquo;</a></p>
-
-    </div>
-</div>
