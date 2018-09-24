@@ -22,7 +22,7 @@
 }
 
 
-
+<hr class="featurette-divider">
 <link href="~/Content/Carousel.css" rel="stylesheet" />
 
 <div id="carouselPrincipal" class="carousel slide" data-ride="carousel" data-interval="3000">
@@ -59,7 +59,7 @@
     </div>
 </div>
 
-
+<hr class="featurette-divider">
 <!-- Marketing messaging and featurettes
 ================================================== -->
 <!-- Wrap the rest of the page in another container to center all the content. -->
@@ -69,19 +69,19 @@
     <!-- Three columns of text below the carousel -->
     <div class="row">
         <div class="col-lg-4">
-            <img class="rounded-circle" src="~/Content/Imagenes/member2.jpg" alt="Dra. Carla" width="140" height="140">
+            <img data-toggle="tooltip" data-placement="top" title="Jefa de Cirugia" class="rounded-circle" src="~/Content/Imagenes/member2.jpeg" alt="Dra. Carla" width="140" height="140">
             <h2>Especialista Carla</h2>
             <p>La doctora Carla se especializo en la Universidad de Londres en metodos de salvaguardar embarazos geneticamente complejos.</p>
 
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-            <img class="rounded-circle" src="~/Content/Imagenes/member3.jpg" alt="Dr. Hector" width="140" height="140">
+            <img data-toggle="tooltip" data-placement="top" title="Director General" class="rounded-circle" src="~/Content/Imagenes/member3.jpeg" alt="Dr. Hector" width="140" height="140">
             <h2>Especialista Hector</h2>
             <p>El doctor Hector realizo su especiaidad en la rama de atencion prenatal para atender a sus pacientes bajo los más altos estandares medicos internacionales.</p>
 
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-            <img class="rounded-circle" src="~/Content/Imagenes/member4.jpg" alt="Dr. Jorge" width="140" height="140">
+            <img data-toggle="tooltip" data-placement="top" title="Director Equipo Medico" class="rounded-circle" src="~/Content/Imagenes/member4.jpeg" alt="Dr. Jorge" width="140" height="140">
             <h2>Especialista Jorge</h2>
             <p>El doctor Joge obtuvo su maestria en atencion ginecologica de la Universidad de Columbia con inclinacion en embarazos complejos.</p>
 
@@ -105,11 +105,35 @@
 
     <div class="row featurette">
         <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">Contamos con multiples especialidades <span class="text-muted">en nuestro centro.</span></h2>
+            <p class="lead">Nuestros especialistas provienen de las mas amplias ramas de la medicina tradicional y no convencional para poder asistirlo y brindarle soporte en todas sus dudas.</p>
+        </div>
+        <div class="col-md-5 order-md-1">
+            <img class="featurette-image img-fluid mx-auto" src="~/Content/Imagenes/muchos-iconos.jpeg" alt="Especialidades">
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">Estamos a su servicio <span class="text-muted">y por eso queremos brindarle tranquilidad.</span></h2>
+            <p class="lead">No se preocupe, esta institucion cuenta con lo mas altos avales de la medicina para que su experiencia sea lo mas transparente posible.</p>
+        </div>
+        <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" src="~/Content/Imagenes/presion-min.jpeg" alt="Despreocupese">
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7 order-md-2">
             <h2 class="featurette-heading">Queremos estar cerca de nuestros pacientes <span class="text-muted">por eso contamos con multiples maneras de contactarnos.</span></h2>
             <p class="lead">Usted podra contactarse con nuestra institucion a traves de multiples canales.</p>
         </div>
         <div class="col-md-5 order-md-1">
-            <img class="featurette-image img-fluid mx-auto" src="~/Content/Imagenes/descarga.jpg" alt="Contactenos">
+            <img class="featurette-image img-fluid mx-auto" src="~/Content/Imagenes/descarga.png" alt="Contactenos">
         </div>
     </div>
 
@@ -121,13 +145,13 @@
 
 @Html.Partial("_NosMudamos")
 @section Scripts{
-    <script type="text/javascript">
+    <script>
         $(document).ready(function () {
             // Handler for .ready() called.
             $("#nosMudamos").modal('show');
         });
     </script>
-    <script type="text/javascript">
+    <script>
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         })
