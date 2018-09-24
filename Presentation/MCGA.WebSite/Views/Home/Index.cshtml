@@ -1,6 +1,27 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@using WebApplication1.Constants.HomeController
+@{
+    ViewBag.Title = "Clinica Embarazos de Riesgo Dr. Erick Rosenkratsz";
+    ViewBag.Description = "Institucion con los mas calificados especialistas para embarazos de riesgo. Ultima tecnologia y estandares para pacientes.";
+    ViewBag.Author = Application.Name;
+    ViewBag.ReferrerMode = ReferrerMode.OriginWhenCrossOrigin;
+    ViewBag.TwitterCard = new SummaryLargeImageTwitterCard("@fcetraro");
+    ViewBag.OpenGraph = new OpenGraphBusiness(
+        ViewBag.Title,
+        new OpenGraphImage(Url.AbsoluteContent("~/content/icons/open-graph-1200x630.png")) { Height = 630, Type = ContentType.Png, Width = 1200 },
+        new OpenGraphContactData(Application.StreetAddress, Application.Locality, Application.PostalCode, Application.Country)
+        {
+            Email = Application.Email,
+            Phone = Application.Phone,
+            Website = Url.AbsoluteRouteUrl(HomeControllerRoute.GetIndex)
+        },
+        new OpenGraphLocation(Application.Latitude, Application.Longitude))
+    {
+        Determiner = OpenGraphDeterminer.Blank,
+        SiteName = Application.Name
+    };
 }
+
+
 
 <link href="~/Content/Carousel.css" rel="stylesheet" />
 
@@ -9,7 +30,6 @@
         <li data-target="#carouselPrincipal" data-slide-to="0" class="active"></li>
         <li data-target="#carouselPrincipal" data-slide-to="1"></li>
         <li data-target="#carouselPrincipal" data-slide-to="2"></li>
-        <li data-target="#carouselPrincipal" data-slide-to="3"></li>
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
@@ -73,7 +93,7 @@
 
     <div class="row featurette">
         <div class="col-md-7">
-            <h2 class="featurette-heading">Esta instucion cuenta con un centro de<span class="text-muted">investigacion garantizando los ultimos avances para embarazos.</span></h2>
+            <h2 class="featurette-heading">Esta instucion cuenta con un centro de <span class="text-muted">investigacion garantizando los ultimos avances para embarazos.</span></h2>
             <p class="lead">Para brindar la mejor atencion a nuestros pacientes, invertimos en tecnicas y especialistas año a año.</p>
         </div>
         <div class="col-md-5">
@@ -106,5 +126,10 @@
             // Handler for .ready() called.
             $("#nosMudamos").modal('show');
         });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
     </script>
 }

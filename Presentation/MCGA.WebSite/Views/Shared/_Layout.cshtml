@@ -1,18 +1,35 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="/content/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/content/icons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/content/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/content/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/content/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/content/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/content/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/content/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/content/icons/apple-touch-icon-180x180.png">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <meta name="theme-color" content="#1E1E1E">
 
-    <title>@ViewBag.Title - Federico A. Cetraro 2018 MCGA</title>
-
+    <meta name="description" content="@ViewBag.Description">
+    <meta name="author" content="@ViewBag.Author">
+    @Html.TwitterCard((TwitterCard)ViewBag.TwitterCard)
+    @Html.OpenGraph((OpenGraphMetadata)ViewBag.OpenGraph)
+    @Html.ReferrerMeta((ReferrerMode)ViewBag.ReferrerMode)
+    
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/esm/popper.js"></script>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="~/Scripts/jquery-3.3.1.js"></script>
-    <script async src="//platform-api.sharethis.com/js/sharethis.js#property=5ba6ac2770388d001124964d&product=" sticky-share-buttons"></script>
+    <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5ba6ac2770388d001124964d&product=sticky-share-buttons"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126266877-1"></script>
     <script>
@@ -25,37 +42,47 @@
 
 </head>
 <body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Navegar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Navegar"></button>
             <div class="collapse navbar-collapse" id="navbarToggler">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item item-principal"><a class="nav-link" href="/Home/Index">Inicio</a></li>
-                    <li class="nav-item item-principal"><a class="nav-link" href="/Home/About">Nosotros</a></li>
-                    <li class="nav-item item-principal"><a class="nav-link" href="/Home/Contact">Contacto</a></li>
+                    <li class="nav-item item-principal"><a class="nav-link" href="/">Inicio</a></li>
+                    <li class="nav-item item-principal"><a class="nav-link" href="/Nosotros">Nosotros</a></li>
+                    <li class="nav-item item-principal"><a class="nav-link" href="/Contactenos">Contacto</a></li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+                <ul class="navbar-nav navbar-right">
+                    <li class="nav-item"><a class="nav-link" href="/Registrese" id="registerLink">Registrarse</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Iniciar-sesion" id="loginLink">Iniciar sesi&#243;n</a></li>
+                </ul>
+
+            </div>
+        </nav>
+    </div>
+
+
+        <div class="container">
+            <div class="body-content">
+                @RenderBody()
+
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - MCGA 2018 - Proyecto Federico A. Cetraro</p>
+                    <a href="https://www.facebook.com/cetraromcga2018" class="fa fa-facebook"></a>
+                    <a href="https://twitter.com/fcetraro" class="fa fa-twitter"></a>
+                    <a href="https://plus.google.com/u/0/103688756495357548158" class="fa fa-google"></a>
+                    <a href="https://ar.linkedin.com/in/federico-adrian-cetraro/" class="fa fa-linkedin"></a>
+                    <a href="https://www.youtube.com/channel/UCX9RVdHdDNP7gdlQtLeN9Vg" class="fa fa-youtube"></a>
+                    <a href="https://www.instagram.com/mcga2018turnos/" class="fa fa-instagram"></a>
+                </footer>
             </div>
         </div>
-    </nav>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - MCGA 2018 - Proyecto Federico A. Cetraro</p>
-            <a href="https://www.facebook.com/cetraromcga2018" class="fa fa-facebook"></a>
-            <a href="https://twitter.com/mcga2018turnos" class="fa fa-twitter"></a>
-            <a href="https://plus.google.com/u/0/103688756495357548158" class="fa fa-google"></a>
-            <a href="https://ar.linkedin.com/in/federico-adrian-cetraro/" class="fa fa-linkedin"></a>
-            <a href="https://www.youtube.com/channel/UCX9RVdHdDNP7gdlQtLeN9Vg" class="fa fa-youtube"></a>
-            <a href="https://www.instagram.com/mcga2018turnos/" class="fa fa-instagram"></a>
-        </footer>
-    </div>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-    @RenderSection("Modal", required: false)
-    
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+        @RenderSection("Modal", required: false)
+
 </body>
 </html>

@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MCGA.WebSite.Models;
+using WebApplication1.Constants.HomeController;
 
 namespace MCGA.WebSite.Controllers
 {
@@ -55,6 +56,7 @@ namespace MCGA.WebSite.Controllers
         //
         // GET: /Account/Login
         [AllowAnonymous]
+        [Route("Iniciar-sesion", Name = HomeControllerRoute.GetLogin)]
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
@@ -137,6 +139,7 @@ namespace MCGA.WebSite.Controllers
         //
         // GET: /Account/Register
         [AllowAnonymous]
+        [Route("Registrese", Name = HomeControllerRoute.GetRegister)]
         public ActionResult Register()
         {
             return View();
