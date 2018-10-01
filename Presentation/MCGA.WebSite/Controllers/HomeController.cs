@@ -11,6 +11,7 @@ namespace MCGA.WebSite.Controllers
     
     public class HomeController : Controller
     {
+        [RequireHttps]
         [Compress]
         [Route("", Name = HomeControllerRoute.GetIndex)]
         public ActionResult Index()
@@ -18,6 +19,7 @@ namespace MCGA.WebSite.Controllers
             return this.View(HomeControllerAction.Index);
         }
 
+        [RequireHttps]
         [Compress]
         [Route("Nosotros", Name = HomeControllerRoute.GetAbout)]
         public ActionResult About()
@@ -27,6 +29,7 @@ namespace MCGA.WebSite.Controllers
             return View();
         }
 
+        [RequireHttps]
         [Compress]
         [Route("Contactenos", Name = HomeControllerRoute.GetContact)]
         public ActionResult Contact()

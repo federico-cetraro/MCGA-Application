@@ -21,7 +21,7 @@
     <meta name="author" content="@ViewBag.Author">
     @Html.TwitterCard((TwitterCard)ViewBag.TwitterCard)
     @Html.OpenGraph((OpenGraphMetadata)ViewBag.OpenGraph)
-    
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <script src="~/Scripts/umd/popper.min.js"></script>
@@ -68,16 +68,17 @@
                 @RenderBody()
 
                 <footer>
-                    <p>&copy; @DateTime.Now.Year - MCGA 2018 - Proyecto Federico A. Cetraro</p>
-                    <a href="https://www.facebook.com/cetraromcga2018" class="fa fa-facebook"></a>
-                    <a href="https://twitter.com/fcetraro" class="fa fa-twitter"></a>
+                    <p>&copy; @DateTime.Now.Year - MCGA 2018 - UAI - Proyecto Federico A. Cetraro</p>
+                    <a href="https://www.facebook.com/uai.elfuturososvos" class="fa fa-facebook"></a>
+                    <a href="https://twitter.com/UAInow" class="fa fa-twitter"></a>
                     <a href="https://plus.google.com/u/0/103688756495357548158" class="fa fa-google"></a>
                     <a href="https://ar.linkedin.com/in/federico-adrian-cetraro/" class="fa fa-linkedin"></a>
-                    <a href="https://www.youtube.com/channel/UCX9RVdHdDNP7gdlQtLeN9Vg" class="fa fa-youtube"></a>
+                    <a href="https://www.youtube.com/user/UAIelfuturososvos" class="fa fa-youtube"></a>
                     <a href="https://www.instagram.com/mcga2018turnos/" class="fa fa-instagram"></a>
                 </footer>
             </div>
         </div>
+         
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)
