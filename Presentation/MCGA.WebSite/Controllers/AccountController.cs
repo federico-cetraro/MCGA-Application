@@ -68,6 +68,7 @@ namespace MCGA.WebSite.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        [Route("Iniciar-sesion", Name = HomeControllerRoute.PostLogin)]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
@@ -150,6 +151,7 @@ namespace MCGA.WebSite.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        [Route("Registrese", Name = HomeControllerRoute.PostRegister)]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)

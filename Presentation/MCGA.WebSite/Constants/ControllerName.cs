@@ -9,5 +9,6 @@ namespace WebApplication1.Constants
     {
         public const string Error = "Error";
         public const string Home = "Home";
+        public const string Account = "Account";
     }
 }

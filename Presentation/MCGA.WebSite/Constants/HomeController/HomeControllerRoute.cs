@@ -12,5 +12,8 @@ namespace WebApplication1.Constants.HomeController
         public const string GetIndex = ControllerName.Home + "GetIndex";
         public const string GetLogin = ControllerName.Home + "GetLogin";
         public const string GetRegister = ControllerName.Home + "GetRegister";
+        //metodos post para chequear que vuelva a funcionar
+        public const string PostRegister = ControllerName.Home + "PostRegister";
+        public const string PostLogin = ControllerName.Home + "PostLogin";
     }
 }

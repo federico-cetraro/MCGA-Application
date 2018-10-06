@@ -28,7 +28,7 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="~/Scripts/jquery-3.3.1.js"></script>
-    <script src="//platform-api.sharethis.com/js/sharethis.js#property=5ba6ac2770388d001124964d&product=sticky-share-buttons"></script>
+    @*<script src="//platform-api.sharethis.com/js/sharethis.js#property=5ba6ac2770388d001124964d&product=sticky-share-buttons"></script>*@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126266877-1"></script>
     <script>
@@ -53,36 +53,45 @@
                     <li class="nav-item item-principal"><a class="nav-link" href="/Nosotros">Nosotros</a></li>
                     <li class="nav-item item-principal"><a class="nav-link" href="/Contactenos">Contacto</a></li>
                 </ul>
-                <ul class="navbar-nav navbar-right">
-                    <li class="nav-item"><a class="nav-link" href="/Registrese" id="registerLink">Registrarse</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/Iniciar-sesion" id="loginLink">Iniciar sesi&#243;n</a></li>
-                </ul>
+                @Html.Partial("_LoginPartial")
+                @*<ul class="navbar-nav navbar-right">
+                        <li class="nav-item"><a class="nav-link" href="/Registrese" id="registerLink">Registrarse</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/Iniciar-sesion" id="loginLink">Iniciar sesi&#243;n</a></li>
+                    </ul>*@
 
             </div>
         </nav>
     </div>
 
 
-        <div class="container">
-            <div class="body-content">
-                @RenderBody()
+    <div class="container">
+        <div class="body-content">
+            @RenderBody()
 
-                <footer>
-                    <p>&copy; @DateTime.Now.Year - MCGA 2018 - UAI - Proyecto Federico A. Cetraro</p>
-                    <a href="https://www.facebook.com/uai.elfuturososvos" class="fa fa-facebook"></a>
-                    <a href="https://twitter.com/UAInow" class="fa fa-twitter"></a>
-                    <a href="https://plus.google.com/u/0/103688756495357548158" class="fa fa-google"></a>
-                    <a href="https://ar.linkedin.com/in/federico-adrian-cetraro/" class="fa fa-linkedin"></a>
-                    <a href="https://www.youtube.com/user/UAIelfuturososvos" class="fa fa-youtube"></a>
-                    <a href="https://www.instagram.com/mcga2018turnos/" class="fa fa-instagram"></a>
-                </footer>
-            </div>
+            <footer>
+                <p>&copy; @DateTime.Now.Year - MCGA 2018 - UAI - Proyecto Federico A. Cetraro</p>
+                <a href="https://www.facebook.com/uai.elfuturososvos" class="fa fa-facebook"></a>
+                <a href="https://twitter.com/UAInow" class="fa fa-twitter"></a>
+                <a href="https://plus.google.com/113155245406425976841" class="fa fa-google"></a>
+                <a href="https://ar.linkedin.com/in/federico-adrian-cetraro/" class="fa fa-linkedin"></a>
+                <a href="https://www.youtube.com/user/UAIelfuturososvos" class="fa fa-youtube"></a>
+                <a href="https://www.instagram.com/mcga2018turnos/" class="fa fa-instagram"></a>
+            </footer>
         </div>
-         
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
-        @RenderSection("Modal", required: false)
+    </div>
 
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    @RenderSection("Modal", required: false)
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5bb5530a533c67d9"></script>
+    <script>
+        $(document).ready(function () {
+            $("div[style='opacity: 0.9; z-index: 2147483647; position: fixed; left: 0px; bottom: 0px; height: 65px; right: 0px; display: block; width: 100%; background-color: #202020; margin: 0px; padding: 0px;']").remove();
+            $("div[style='margin: 0px; padding: 0px; left: 0px; width: 100%; height: 65px; right: 0px; bottom: 0px; display: block; position: fixed; z-index: 2147483647; opacity: 0.9; background-color: rgb(32, 32, 32);']").remove();
+            $("div[onmouseover='S_ssac();']").remove();
+            $("center").remove();
+        });
+    </script>
 </body>
 </html>
