@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="efe25ae2e300458c854c9159482412c3" Name="Diagram1">
+        <EntityTypeShape EntityType="MedicureModel.Afiliado" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicureModel.Agenda" Width="1.5" PointX="7.5" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicureModel.AgendaCancelacion" Width="1.5" PointX="9.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicureModel.AspNetRoles" Width="1.5" PointX="12.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicureModel.AspNetUserClaims" Width="1.5" PointX="17.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicureModel.AspNetUserLogins" Width="1.5" PointX="17.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicureModel.AspNetUsers" Width="1.5" PointX="15" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicureModel.Atencion" Width="1.5" PointX="9.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicureModel.Cancelacion" Width="1.5" PointX="12.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicureModel.Especialidad" Width="1.5" PointX="3" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicureModel.EspecialidadesProfesional" Width="1.5" PointX="5.25" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicureModel.EstadoCivil" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicureModel.Profesional" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicureModel.TipoCancelacion" Width="1.5" PointX="10.5" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicureModel.TipoDia" Width="1.5" PointX="5.25" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicureModel.TipoDocumento" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicureModel.TipoEspecialidad" Width="1.5" PointX="0.75" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicureModel.TipoReseva" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicureModel.TipoSexo" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicureModel.Turno" Width="1.5" PointX="7.5" PointY="8.25" IsExpanded="true" />
+        <AssociationConnector Association="MedicureModel.FK__Afiliados__estad__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicureModel.FK__Turnos__afiliado__797309D9" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicureModel.FK_Afiliado_TipoDocumento" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicureModel.FK_Afiliado_TipoSexo" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicureModel.FK_Agenda_EspecialidadesProfesional" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicureModel.FK_Agenda_TipoDia" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicureModel.FK_AgendaCancelacion_Agenda" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicureModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicureModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicureModel.FK__Atencione__turno__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicureModel.FK__Cancelaci__tipo___0A9D95DB" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicureModel.FK__Cancelaci__turno__6EF57B66" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicureModel.FK__Especiali__TipoE__0C85DE4D" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicureModel.FK_EspecialidadesProfesional_Especialidad" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicureModel.FK__Especiali__profe__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicureModel.FK_Turnos_EspecialidadesProfesional" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicureModel.FK_Profesional_TipoDocumento" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicureModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

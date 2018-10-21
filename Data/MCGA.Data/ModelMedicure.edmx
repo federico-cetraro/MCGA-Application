@@ -1,0 +1,1491 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MedicureModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Afiliado">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Apellido" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="TipoDocumentoId" Type="int" Nullable="false" />
+          <Property Name="Numero" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="255" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="255" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="TipoSexoId" Type="int" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="datetime" Nullable="false" />
+          <Property Name="EstadoCivilId" Type="int" Nullable="false" />
+          <Property Name="NumeroAfiliado" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PlanId" Type="int" Nullable="false" />
+          <Property Name="Foto" Type="nvarchar" MaxLength="255" />
+          <Property Name="Habilitado" Type="bit" Nullable="false" />
+          <Property Name="createdon" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="createdby" Type="nvarchar" MaxLength="100" />
+          <Property Name="changedon" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="changedby" Type="nvarchar" MaxLength="100" />
+          <Property Name="deletedon" Type="datetime2" Precision="7" />
+          <Property Name="deletedby" Type="nvarchar" MaxLength="100" />
+          <Property Name="isdeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Agenda">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EspecialidadProfesionalId" Type="int" Nullable="false" />
+          <Property Name="TipoDiaId" Type="int" Nullable="false" />
+          <Property Name="fecha_desde" Type="datetime" Nullable="false" />
+          <Property Name="fecha_hasta" Type="datetime" Nullable="false" />
+          <Property Name="hora_desde" Type="time" Precision="0" Nullable="false" />
+          <Property Name="hora_hasta" Type="time" Precision="0" Nullable="false" />
+          <Property Name="createdon" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="createdby" Type="nvarchar" MaxLength="100" />
+          <Property Name="changedon" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="changedby" Type="nvarchar" MaxLength="100" />
+          <Property Name="deletedon" Type="datetime2" Precision="7" />
+          <Property Name="deletedby" Type="nvarchar" MaxLength="100" />
+          <Property Name="isdeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AgendaCancelacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="agenda_id" Type="int" Nullable="false" />
+          <Property Name="detalle_cancel" Type="nvarchar" MaxLength="2000" Nullable="false" />
+          <Property Name="fecha_cancel" Type="datetime" />
+          <Property Name="createdon" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="createdby" Type="nvarchar" MaxLength="100" />
+          <Property Name="changedon" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="changedby" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="HomeTown" Type="nvarchar(max)" />
+          <Property Name="BirthDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Atencion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="turno_id" Type="int" Nullable="false" />
+          <Property Name="hora_llegada" Type="datetime" Nullable="false" />
+          <Property Name="hora_atencion" Type="datetime" />
+          <Property Name="sintomas" Type="nvarchar" MaxLength="255" />
+          <Property Name="diagnostico" Type="nvarchar" MaxLength="255" />
+          <Property Name="bono_id" Type="int" Nullable="false" />
+          <Property Name="createdon" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="createdby" Type="nvarchar" MaxLength="100" />
+          <Property Name="changedon" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="changedby" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Cancelacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="turno_id" Type="int" Nullable="false" />
+          <Property Name="detalle_cancel" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="fecha_cancel" Type="datetime" />
+          <Property Name="tipo_cancel_id" Type="int" Nullable="false" />
+          <Property Name="createdon" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="createdby" Type="nvarchar" MaxLength="100" />
+          <Property Name="changedon" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="changedby" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Especialidad">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="frecuencia" Type="int" Nullable="false" />
+          <Property Name="TipoEspecialidadId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EspecialidadesProfesional">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EspecialidadId" Type="int" Nullable="false" />
+          <Property Name="ProfesionalId" Type="int" Nullable="false" />
+          <Property Name="createdon" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="createdby" Type="nvarchar" MaxLength="100" />
+          <Property Name="changedon" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="changedby" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="EstadoCivil">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Profesional">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Apellido" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="TipoDocumentoId" Type="int" Nullable="false" />
+          <Property Name="Numero" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="255" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="255" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="FechaNacimiento" Type="datetime" Nullable="false" />
+          <Property Name="Matricula" Type="nvarchar" MaxLength="255" />
+          <Property Name="Foto" Type="nvarchar" MaxLength="255" />
+          <Property Name="createdon" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="createdby" Type="nvarchar" MaxLength="100" />
+          <Property Name="changedon" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="changedby" Type="nvarchar" MaxLength="100" />
+          <Property Name="deletedon" Type="datetime2" Precision="7" />
+          <Property Name="deletedby" Type="nvarchar" MaxLength="100" />
+          <Property Name="isdeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoCancelacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoDia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoDocumento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoEspecialidad">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoReseva">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoSexo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Turno">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Hora" Type="time" Precision="0" Nullable="false" />
+          <Property Name="AfiliadoId" Type="int" Nullable="false" />
+          <Property Name="EspecialidadProfesionalId" Type="int" Nullable="false" />
+          <Property Name="reserva" Type="int" Nullable="false" />
+          <Property Name="Observaciones" Type="text" />
+          <Property Name="createdon" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="createdby" Type="nvarchar" MaxLength="100" />
+          <Property Name="changedon" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="changedby" Type="nvarchar" MaxLength="100" />
+          <Property Name="deletedon" Type="datetime2" Precision="7" />
+          <Property Name="deletedby" Type="nvarchar" MaxLength="100" />
+          <Property Name="isdeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Afiliados__estad__5535A963">
+          <End Role="EstadoCivil" Type="Self.EstadoCivil" Multiplicity="1" />
+          <End Role="Afiliado" Type="Self.Afiliado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoCivil">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Afiliado">
+              <PropertyRef Name="EstadoCivilId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Atencione__turno__6B24EA82">
+          <End Role="Turno" Type="Self.Turno" Multiplicity="1" />
+          <End Role="Atencion" Type="Self.Atencion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Turno">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Atencion">
+              <PropertyRef Name="turno_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cancelaci__tipo___0A9D95DB">
+          <End Role="TipoCancelacion" Type="Self.TipoCancelacion" Multiplicity="1" />
+          <End Role="Cancelacion" Type="Self.Cancelacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCancelacion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cancelacion">
+              <PropertyRef Name="tipo_cancel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cancelaci__turno__6EF57B66">
+          <End Role="Turno" Type="Self.Turno" Multiplicity="1" />
+          <End Role="Cancelacion" Type="Self.Cancelacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Turno">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cancelacion">
+              <PropertyRef Name="turno_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Especiali__profe__5FB337D6">
+          <End Role="Profesional" Type="Self.Profesional" Multiplicity="1" />
+          <End Role="EspecialidadesProfesional" Type="Self.EspecialidadesProfesional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesional">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EspecialidadesProfesional">
+              <PropertyRef Name="ProfesionalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Especiali__TipoE__0C85DE4D">
+          <End Role="TipoEspecialidad" Type="Self.TipoEspecialidad" Multiplicity="1" />
+          <End Role="Especialidad" Type="Self.Especialidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoEspecialidad">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Especialidad">
+              <PropertyRef Name="TipoEspecialidadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Turnos__afiliado__797309D9">
+          <End Role="Afiliado" Type="Self.Afiliado" Multiplicity="1" />
+          <End Role="Turno" Type="Self.Turno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Afiliado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Turno">
+              <PropertyRef Name="AfiliadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Afiliado_TipoDocumento">
+          <End Role="TipoDocumento" Type="Self.TipoDocumento" Multiplicity="1" />
+          <End Role="Afiliado" Type="Self.Afiliado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoDocumento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Afiliado">
+              <PropertyRef Name="TipoDocumentoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Afiliado_TipoSexo">
+          <End Role="TipoSexo" Type="Self.TipoSexo" Multiplicity="1" />
+          <End Role="Afiliado" Type="Self.Afiliado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoSexo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Afiliado">
+              <PropertyRef Name="TipoSexoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agenda_EspecialidadesProfesional">
+          <End Role="EspecialidadesProfesional" Type="Self.EspecialidadesProfesional" Multiplicity="1" />
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EspecialidadesProfesional">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Agenda">
+              <PropertyRef Name="EspecialidadProfesionalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agenda_TipoDia">
+          <End Role="TipoDia" Type="Self.TipoDia" Multiplicity="1" />
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoDia">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Agenda">
+              <PropertyRef Name="TipoDiaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AgendaCancelacion_Agenda">
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="1" />
+          <End Role="AgendaCancelacion" Type="Self.AgendaCancelacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agenda">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AgendaCancelacion">
+              <PropertyRef Name="agenda_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EspecialidadesProfesional_Especialidad">
+          <End Role="Especialidad" Type="Self.Especialidad" Multiplicity="1" />
+          <End Role="EspecialidadesProfesional" Type="Self.EspecialidadesProfesional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Especialidad">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EspecialidadesProfesional">
+              <PropertyRef Name="EspecialidadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Profesional_TipoDocumento">
+          <End Role="TipoDocumento" Type="Self.TipoDocumento" Multiplicity="1" />
+          <End Role="Profesional" Type="Self.Profesional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoDocumento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Profesional">
+              <PropertyRef Name="TipoDocumentoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Turnos_EspecialidadesProfesional">
+          <End Role="EspecialidadesProfesional" Type="Self.EspecialidadesProfesional" Multiplicity="1" />
+          <End Role="Turno" Type="Self.Turno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EspecialidadesProfesional">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Turno">
+              <PropertyRef Name="EspecialidadProfesionalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MedicureModelStoreContainer">
+          <EntitySet Name="Afiliado" EntityType="Self.Afiliado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Agenda" EntityType="Self.Agenda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AgendaCancelacion" EntityType="Self.AgendaCancelacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Atencion" EntityType="Self.Atencion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cancelacion" EntityType="Self.Cancelacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Especialidad" EntityType="Self.Especialidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EspecialidadesProfesional" EntityType="Self.EspecialidadesProfesional" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstadoCivil" EntityType="Self.EstadoCivil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profesional" EntityType="Self.Profesional" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoCancelacion" EntityType="Self.TipoCancelacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoDia" EntityType="Self.TipoDia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoDocumento" EntityType="Self.TipoDocumento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoEspecialidad" EntityType="Self.TipoEspecialidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoReseva" EntityType="Self.TipoReseva" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoSexo" EntityType="Self.TipoSexo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Turno" EntityType="Self.Turno" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Afiliados__estad__5535A963" Association="Self.FK__Afiliados__estad__5535A963">
+            <End Role="EstadoCivil" EntitySet="EstadoCivil" />
+            <End Role="Afiliado" EntitySet="Afiliado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Atencione__turno__6B24EA82" Association="Self.FK__Atencione__turno__6B24EA82">
+            <End Role="Turno" EntitySet="Turno" />
+            <End Role="Atencion" EntitySet="Atencion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cancelaci__tipo___0A9D95DB" Association="Self.FK__Cancelaci__tipo___0A9D95DB">
+            <End Role="TipoCancelacion" EntitySet="TipoCancelacion" />
+            <End Role="Cancelacion" EntitySet="Cancelacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cancelaci__turno__6EF57B66" Association="Self.FK__Cancelaci__turno__6EF57B66">
+            <End Role="Turno" EntitySet="Turno" />
+            <End Role="Cancelacion" EntitySet="Cancelacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Especiali__profe__5FB337D6" Association="Self.FK__Especiali__profe__5FB337D6">
+            <End Role="Profesional" EntitySet="Profesional" />
+            <End Role="EspecialidadesProfesional" EntitySet="EspecialidadesProfesional" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Especiali__TipoE__0C85DE4D" Association="Self.FK__Especiali__TipoE__0C85DE4D">
+            <End Role="TipoEspecialidad" EntitySet="TipoEspecialidad" />
+            <End Role="Especialidad" EntitySet="Especialidad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Turnos__afiliado__797309D9" Association="Self.FK__Turnos__afiliado__797309D9">
+            <End Role="Afiliado" EntitySet="Afiliado" />
+            <End Role="Turno" EntitySet="Turno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Afiliado_TipoDocumento" Association="Self.FK_Afiliado_TipoDocumento">
+            <End Role="TipoDocumento" EntitySet="TipoDocumento" />
+            <End Role="Afiliado" EntitySet="Afiliado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Afiliado_TipoSexo" Association="Self.FK_Afiliado_TipoSexo">
+            <End Role="TipoSexo" EntitySet="TipoSexo" />
+            <End Role="Afiliado" EntitySet="Afiliado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agenda_EspecialidadesProfesional" Association="Self.FK_Agenda_EspecialidadesProfesional">
+            <End Role="EspecialidadesProfesional" EntitySet="EspecialidadesProfesional" />
+            <End Role="Agenda" EntitySet="Agenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agenda_TipoDia" Association="Self.FK_Agenda_TipoDia">
+            <End Role="TipoDia" EntitySet="TipoDia" />
+            <End Role="Agenda" EntitySet="Agenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AgendaCancelacion_Agenda" Association="Self.FK_AgendaCancelacion_Agenda">
+            <End Role="Agenda" EntitySet="Agenda" />
+            <End Role="AgendaCancelacion" EntitySet="AgendaCancelacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EspecialidadesProfesional_Especialidad" Association="Self.FK_EspecialidadesProfesional_Especialidad">
+            <End Role="Especialidad" EntitySet="Especialidad" />
+            <End Role="EspecialidadesProfesional" EntitySet="EspecialidadesProfesional" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profesional_TipoDocumento" Association="Self.FK_Profesional_TipoDocumento">
+            <End Role="TipoDocumento" EntitySet="TipoDocumento" />
+            <End Role="Profesional" EntitySet="Profesional" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Turnos_EspecialidadesProfesional" Association="Self.FK_Turnos_EspecialidadesProfesional">
+            <End Role="EspecialidadesProfesional" EntitySet="EspecialidadesProfesional" />
+            <End Role="Turno" EntitySet="Turno" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MedicureModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Afiliado">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TipoDocumentoId" Type="Int32" Nullable="false" />
+          <Property Name="Numero" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TipoSexoId" Type="Int32" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EstadoCivilId" Type="Int32" Nullable="false" />
+          <Property Name="NumeroAfiliado" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PlanId" Type="Int32" Nullable="false" />
+          <Property Name="Foto" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Habilitado" Type="Boolean" Nullable="false" />
+          <Property Name="createdon" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="createdby" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="changedon" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="changedby" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="deletedon" Type="DateTime" Precision="7" />
+          <Property Name="deletedby" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="isdeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="EstadoCivil" Relationship="Self.FK__Afiliados__estad__5535A963" FromRole="Afiliado" ToRole="EstadoCivil" />
+          <NavigationProperty Name="Turno" Relationship="Self.FK__Turnos__afiliado__797309D9" FromRole="Afiliado" ToRole="Turno" />
+          <NavigationProperty Name="TipoDocumento" Relationship="Self.FK_Afiliado_TipoDocumento" FromRole="Afiliado" ToRole="TipoDocumento" />
+          <NavigationProperty Name="TipoSexo" Relationship="Self.FK_Afiliado_TipoSexo" FromRole="Afiliado" ToRole="TipoSexo" />
+        </EntityType>
+        <EntityType Name="Agenda">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EspecialidadProfesionalId" Type="Int32" Nullable="false" />
+          <Property Name="TipoDiaId" Type="Int32" Nullable="false" />
+          <Property Name="fecha_desde" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fecha_hasta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="hora_desde" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="hora_hasta" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="createdon" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="createdby" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="changedon" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="changedby" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="deletedon" Type="DateTime" Precision="7" />
+          <Property Name="deletedby" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="isdeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="EspecialidadesProfesional" Relationship="Self.FK_Agenda_EspecialidadesProfesional" FromRole="Agenda" ToRole="EspecialidadesProfesional" />
+          <NavigationProperty Name="TipoDia" Relationship="Self.FK_Agenda_TipoDia" FromRole="Agenda" ToRole="TipoDia" />
+          <NavigationProperty Name="AgendaCancelacion" Relationship="Self.FK_AgendaCancelacion_Agenda" FromRole="Agenda" ToRole="AgendaCancelacion" />
+        </EntityType>
+        <EntityType Name="AgendaCancelacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="agenda_id" Type="Int32" Nullable="false" />
+          <Property Name="detalle_cancel" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fecha_cancel" Type="DateTime" Precision="3" />
+          <Property Name="createdon" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="createdby" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="changedon" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="changedby" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Agenda" Relationship="Self.FK_AgendaCancelacion_Agenda" FromRole="AgendaCancelacion" ToRole="Agenda" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HomeTown" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="Atencion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="turno_id" Type="Int32" Nullable="false" />
+          <Property Name="hora_llegada" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="hora_atencion" Type="DateTime" Precision="3" />
+          <Property Name="sintomas" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="diagnostico" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="bono_id" Type="Int32" Nullable="false" />
+          <Property Name="createdon" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="createdby" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="changedon" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="changedby" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Turno" Relationship="Self.FK__Atencione__turno__6B24EA82" FromRole="Atencion" ToRole="Turno" />
+        </EntityType>
+        <EntityType Name="Cancelacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="turno_id" Type="Int32" Nullable="false" />
+          <Property Name="detalle_cancel" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fecha_cancel" Type="DateTime" Precision="3" />
+          <Property Name="tipo_cancel_id" Type="Int32" Nullable="false" />
+          <Property Name="createdon" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="createdby" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="changedon" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="changedby" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TipoCancelacion" Relationship="Self.FK__Cancelaci__tipo___0A9D95DB" FromRole="Cancelacion" ToRole="TipoCancelacion" />
+          <NavigationProperty Name="Turno" Relationship="Self.FK__Cancelaci__turno__6EF57B66" FromRole="Cancelacion" ToRole="Turno" />
+        </EntityType>
+        <EntityType Name="Especialidad">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="frecuencia" Type="Int32" Nullable="false" />
+          <Property Name="TipoEspecialidadId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TipoEspecialidad" Relationship="Self.FK__Especiali__TipoE__0C85DE4D" FromRole="Especialidad" ToRole="TipoEspecialidad" />
+          <NavigationProperty Name="EspecialidadesProfesional" Relationship="Self.FK_EspecialidadesProfesional_Especialidad" FromRole="Especialidad" ToRole="EspecialidadesProfesional" />
+        </EntityType>
+        <EntityType Name="EspecialidadesProfesional">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EspecialidadId" Type="Int32" Nullable="false" />
+          <Property Name="ProfesionalId" Type="Int32" Nullable="false" />
+          <Property Name="createdon" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="createdby" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="changedon" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="changedby" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Agenda" Relationship="Self.FK_Agenda_EspecialidadesProfesional" FromRole="EspecialidadesProfesional" ToRole="Agenda" />
+          <NavigationProperty Name="Especialidad" Relationship="Self.FK_EspecialidadesProfesional_Especialidad" FromRole="EspecialidadesProfesional" ToRole="Especialidad" />
+          <NavigationProperty Name="Profesional" Relationship="Self.FK__Especiali__profe__5FB337D6" FromRole="EspecialidadesProfesional" ToRole="Profesional" />
+          <NavigationProperty Name="Turno" Relationship="Self.FK_Turnos_EspecialidadesProfesional" FromRole="EspecialidadesProfesional" ToRole="Turno" />
+        </EntityType>
+        <EntityType Name="EstadoCivil">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Afiliado" Relationship="Self.FK__Afiliados__estad__5535A963" FromRole="EstadoCivil" ToRole="Afiliado" />
+        </EntityType>
+        <EntityType Name="Profesional">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TipoDocumentoId" Type="Int32" Nullable="false" />
+          <Property Name="Numero" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Matricula" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Foto" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="createdon" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="createdby" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="changedon" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="changedby" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="deletedon" Type="DateTime" Precision="7" />
+          <Property Name="deletedby" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="isdeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="EspecialidadesProfesional" Relationship="Self.FK__Especiali__profe__5FB337D6" FromRole="Profesional" ToRole="EspecialidadesProfesional" />
+          <NavigationProperty Name="TipoDocumento" Relationship="Self.FK_Profesional_TipoDocumento" FromRole="Profesional" ToRole="TipoDocumento" />
+        </EntityType>
+        <EntityType Name="TipoCancelacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cancelacion" Relationship="Self.FK__Cancelaci__tipo___0A9D95DB" FromRole="TipoCancelacion" ToRole="Cancelacion" />
+        </EntityType>
+        <EntityType Name="TipoDia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Agenda" Relationship="Self.FK_Agenda_TipoDia" FromRole="TipoDia" ToRole="Agenda" />
+        </EntityType>
+        <EntityType Name="TipoDocumento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Afiliado" Relationship="Self.FK_Afiliado_TipoDocumento" FromRole="TipoDocumento" ToRole="Afiliado" />
+          <NavigationProperty Name="Profesional" Relationship="Self.FK_Profesional_TipoDocumento" FromRole="TipoDocumento" ToRole="Profesional" />
+        </EntityType>
+        <EntityType Name="TipoEspecialidad">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Especialidad" Relationship="Self.FK__Especiali__TipoE__0C85DE4D" FromRole="TipoEspecialidad" ToRole="Especialidad" />
+        </EntityType>
+        <EntityType Name="TipoReseva">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoSexo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Afiliado" Relationship="Self.FK_Afiliado_TipoSexo" FromRole="TipoSexo" ToRole="Afiliado" />
+        </EntityType>
+        <EntityType Name="Turno">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Hora" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="AfiliadoId" Type="Int32" Nullable="false" />
+          <Property Name="EspecialidadProfesionalId" Type="Int32" Nullable="false" />
+          <Property Name="reserva" Type="Int32" Nullable="false" />
+          <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="createdon" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="createdby" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="changedon" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="changedby" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="deletedon" Type="DateTime" Precision="7" />
+          <Property Name="deletedby" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="isdeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Afiliado" Relationship="Self.FK__Turnos__afiliado__797309D9" FromRole="Turno" ToRole="Afiliado" />
+          <NavigationProperty Name="Atencion" Relationship="Self.FK__Atencione__turno__6B24EA82" FromRole="Turno" ToRole="Atencion" />
+          <NavigationProperty Name="Cancelacion" Relationship="Self.FK__Cancelaci__turno__6EF57B66" FromRole="Turno" ToRole="Cancelacion" />
+          <NavigationProperty Name="EspecialidadesProfesional" Relationship="Self.FK_Turnos_EspecialidadesProfesional" FromRole="Turno" ToRole="EspecialidadesProfesional" />
+        </EntityType>
+        <Association Name="FK__Afiliados__estad__5535A963">
+          <End Role="EstadoCivil" Type="Self.EstadoCivil" Multiplicity="1" />
+          <End Role="Afiliado" Type="Self.Afiliado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoCivil">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Afiliado">
+              <PropertyRef Name="EstadoCivilId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Turnos__afiliado__797309D9">
+          <End Role="Afiliado" Type="Self.Afiliado" Multiplicity="1" />
+          <End Role="Turno" Type="Self.Turno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Afiliado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Turno">
+              <PropertyRef Name="AfiliadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Afiliado_TipoDocumento">
+          <End Role="TipoDocumento" Type="Self.TipoDocumento" Multiplicity="1" />
+          <End Role="Afiliado" Type="Self.Afiliado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoDocumento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Afiliado">
+              <PropertyRef Name="TipoDocumentoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Afiliado_TipoSexo">
+          <End Role="TipoSexo" Type="Self.TipoSexo" Multiplicity="1" />
+          <End Role="Afiliado" Type="Self.Afiliado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoSexo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Afiliado">
+              <PropertyRef Name="TipoSexoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agenda_EspecialidadesProfesional">
+          <End Role="EspecialidadesProfesional" Type="Self.EspecialidadesProfesional" Multiplicity="1" />
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EspecialidadesProfesional">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Agenda">
+              <PropertyRef Name="EspecialidadProfesionalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agenda_TipoDia">
+          <End Role="TipoDia" Type="Self.TipoDia" Multiplicity="1" />
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoDia">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Agenda">
+              <PropertyRef Name="TipoDiaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AgendaCancelacion_Agenda">
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="1" />
+          <End Role="AgendaCancelacion" Type="Self.AgendaCancelacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agenda">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AgendaCancelacion">
+              <PropertyRef Name="agenda_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Atencione__turno__6B24EA82">
+          <End Role="Turno" Type="Self.Turno" Multiplicity="1" />
+          <End Role="Atencion" Type="Self.Atencion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Turno">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Atencion">
+              <PropertyRef Name="turno_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cancelaci__tipo___0A9D95DB">
+          <End Role="TipoCancelacion" Type="Self.TipoCancelacion" Multiplicity="1" />
+          <End Role="Cancelacion" Type="Self.Cancelacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCancelacion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cancelacion">
+              <PropertyRef Name="tipo_cancel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cancelaci__turno__6EF57B66">
+          <End Role="Turno" Type="Self.Turno" Multiplicity="1" />
+          <End Role="Cancelacion" Type="Self.Cancelacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Turno">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cancelacion">
+              <PropertyRef Name="turno_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Especiali__TipoE__0C85DE4D">
+          <End Role="TipoEspecialidad" Type="Self.TipoEspecialidad" Multiplicity="1" />
+          <End Role="Especialidad" Type="Self.Especialidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoEspecialidad">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Especialidad">
+              <PropertyRef Name="TipoEspecialidadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EspecialidadesProfesional_Especialidad">
+          <End Role="Especialidad" Type="Self.Especialidad" Multiplicity="1" />
+          <End Role="EspecialidadesProfesional" Type="Self.EspecialidadesProfesional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Especialidad">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EspecialidadesProfesional">
+              <PropertyRef Name="EspecialidadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Especiali__profe__5FB337D6">
+          <End Role="Profesional" Type="Self.Profesional" Multiplicity="1" />
+          <End Role="EspecialidadesProfesional" Type="Self.EspecialidadesProfesional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesional">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EspecialidadesProfesional">
+              <PropertyRef Name="ProfesionalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Turnos_EspecialidadesProfesional">
+          <End Role="EspecialidadesProfesional" Type="Self.EspecialidadesProfesional" Multiplicity="1" />
+          <End Role="Turno" Type="Self.Turno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EspecialidadesProfesional">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Turno">
+              <PropertyRef Name="EspecialidadProfesionalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Profesional_TipoDocumento">
+          <End Role="TipoDocumento" Type="Self.TipoDocumento" Multiplicity="1" />
+          <End Role="Profesional" Type="Self.Profesional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoDocumento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Profesional">
+              <PropertyRef Name="TipoDocumentoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="MedicureContexto" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Afiliado" EntityType="Self.Afiliado" />
+          <EntitySet Name="Agenda" EntityType="Self.Agenda" />
+          <EntitySet Name="AgendaCancelacion" EntityType="Self.AgendaCancelacion" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+          <EntitySet Name="Atencion" EntityType="Self.Atencion" />
+          <EntitySet Name="Cancelacion" EntityType="Self.Cancelacion" />
+          <EntitySet Name="Especialidad" EntityType="Self.Especialidad" />
+          <EntitySet Name="EspecialidadesProfesional" EntityType="Self.EspecialidadesProfesional" />
+          <EntitySet Name="EstadoCivil" EntityType="Self.EstadoCivil" />
+          <EntitySet Name="Profesional" EntityType="Self.Profesional" />
+          <EntitySet Name="TipoCancelacion" EntityType="Self.TipoCancelacion" />
+          <EntitySet Name="TipoDia" EntityType="Self.TipoDia" />
+          <EntitySet Name="TipoDocumento" EntityType="Self.TipoDocumento" />
+          <EntitySet Name="TipoEspecialidad" EntityType="Self.TipoEspecialidad" />
+          <EntitySet Name="TipoReseva" EntityType="Self.TipoReseva" />
+          <EntitySet Name="TipoSexo" EntityType="Self.TipoSexo" />
+          <EntitySet Name="Turno" EntityType="Self.Turno" />
+          <AssociationSet Name="FK__Afiliados__estad__5535A963" Association="Self.FK__Afiliados__estad__5535A963">
+            <End Role="EstadoCivil" EntitySet="EstadoCivil" />
+            <End Role="Afiliado" EntitySet="Afiliado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Turnos__afiliado__797309D9" Association="Self.FK__Turnos__afiliado__797309D9">
+            <End Role="Afiliado" EntitySet="Afiliado" />
+            <End Role="Turno" EntitySet="Turno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Afiliado_TipoDocumento" Association="Self.FK_Afiliado_TipoDocumento">
+            <End Role="TipoDocumento" EntitySet="TipoDocumento" />
+            <End Role="Afiliado" EntitySet="Afiliado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Afiliado_TipoSexo" Association="Self.FK_Afiliado_TipoSexo">
+            <End Role="TipoSexo" EntitySet="TipoSexo" />
+            <End Role="Afiliado" EntitySet="Afiliado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agenda_EspecialidadesProfesional" Association="Self.FK_Agenda_EspecialidadesProfesional">
+            <End Role="EspecialidadesProfesional" EntitySet="EspecialidadesProfesional" />
+            <End Role="Agenda" EntitySet="Agenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agenda_TipoDia" Association="Self.FK_Agenda_TipoDia">
+            <End Role="TipoDia" EntitySet="TipoDia" />
+            <End Role="Agenda" EntitySet="Agenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AgendaCancelacion_Agenda" Association="Self.FK_AgendaCancelacion_Agenda">
+            <End Role="Agenda" EntitySet="Agenda" />
+            <End Role="AgendaCancelacion" EntitySet="AgendaCancelacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Atencione__turno__6B24EA82" Association="Self.FK__Atencione__turno__6B24EA82">
+            <End Role="Turno" EntitySet="Turno" />
+            <End Role="Atencion" EntitySet="Atencion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cancelaci__tipo___0A9D95DB" Association="Self.FK__Cancelaci__tipo___0A9D95DB">
+            <End Role="TipoCancelacion" EntitySet="TipoCancelacion" />
+            <End Role="Cancelacion" EntitySet="Cancelacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cancelaci__turno__6EF57B66" Association="Self.FK__Cancelaci__turno__6EF57B66">
+            <End Role="Turno" EntitySet="Turno" />
+            <End Role="Cancelacion" EntitySet="Cancelacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Especiali__TipoE__0C85DE4D" Association="Self.FK__Especiali__TipoE__0C85DE4D">
+            <End Role="TipoEspecialidad" EntitySet="TipoEspecialidad" />
+            <End Role="Especialidad" EntitySet="Especialidad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EspecialidadesProfesional_Especialidad" Association="Self.FK_EspecialidadesProfesional_Especialidad">
+            <End Role="Especialidad" EntitySet="Especialidad" />
+            <End Role="EspecialidadesProfesional" EntitySet="EspecialidadesProfesional" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Especiali__profe__5FB337D6" Association="Self.FK__Especiali__profe__5FB337D6">
+            <End Role="Profesional" EntitySet="Profesional" />
+            <End Role="EspecialidadesProfesional" EntitySet="EspecialidadesProfesional" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Turnos_EspecialidadesProfesional" Association="Self.FK_Turnos_EspecialidadesProfesional">
+            <End Role="EspecialidadesProfesional" EntitySet="EspecialidadesProfesional" />
+            <End Role="Turno" EntitySet="Turno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profesional_TipoDocumento" Association="Self.FK_Profesional_TipoDocumento">
+            <End Role="TipoDocumento" EntitySet="TipoDocumento" />
+            <End Role="Profesional" EntitySet="Profesional" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MedicureModelStoreContainer" CdmEntityContainer="MedicureContexto">
+          <EntitySetMapping Name="Afiliado">
+            <EntityTypeMapping TypeName="MedicureModel.Afiliado">
+              <MappingFragment StoreEntitySet="Afiliado">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="TipoDocumentoId" ColumnName="TipoDocumentoId" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TipoSexoId" ColumnName="TipoSexoId" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="EstadoCivilId" ColumnName="EstadoCivilId" />
+                <ScalarProperty Name="NumeroAfiliado" ColumnName="NumeroAfiliado" />
+                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+                <ScalarProperty Name="createdon" ColumnName="createdon" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="changedon" ColumnName="changedon" />
+                <ScalarProperty Name="changedby" ColumnName="changedby" />
+                <ScalarProperty Name="deletedon" ColumnName="deletedon" />
+                <ScalarProperty Name="deletedby" ColumnName="deletedby" />
+                <ScalarProperty Name="isdeleted" ColumnName="isdeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Agenda">
+            <EntityTypeMapping TypeName="MedicureModel.Agenda">
+              <MappingFragment StoreEntitySet="Agenda">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EspecialidadProfesionalId" ColumnName="EspecialidadProfesionalId" />
+                <ScalarProperty Name="TipoDiaId" ColumnName="TipoDiaId" />
+                <ScalarProperty Name="fecha_desde" ColumnName="fecha_desde" />
+                <ScalarProperty Name="fecha_hasta" ColumnName="fecha_hasta" />
+                <ScalarProperty Name="hora_desde" ColumnName="hora_desde" />
+                <ScalarProperty Name="hora_hasta" ColumnName="hora_hasta" />
+                <ScalarProperty Name="createdon" ColumnName="createdon" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="changedon" ColumnName="changedon" />
+                <ScalarProperty Name="changedby" ColumnName="changedby" />
+                <ScalarProperty Name="deletedon" ColumnName="deletedon" />
+                <ScalarProperty Name="deletedby" ColumnName="deletedby" />
+                <ScalarProperty Name="isdeleted" ColumnName="isdeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AgendaCancelacion">
+            <EntityTypeMapping TypeName="MedicureModel.AgendaCancelacion">
+              <MappingFragment StoreEntitySet="AgendaCancelacion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="agenda_id" ColumnName="agenda_id" />
+                <ScalarProperty Name="detalle_cancel" ColumnName="detalle_cancel" />
+                <ScalarProperty Name="fecha_cancel" ColumnName="fecha_cancel" />
+                <ScalarProperty Name="createdon" ColumnName="createdon" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="changedon" ColumnName="changedon" />
+                <ScalarProperty Name="changedby" ColumnName="changedby" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="MedicureModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="MedicureModel.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="MedicureModel.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="MedicureModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="HomeTown" ColumnName="HomeTown" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Atencion">
+            <EntityTypeMapping TypeName="MedicureModel.Atencion">
+              <MappingFragment StoreEntitySet="Atencion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="turno_id" ColumnName="turno_id" />
+                <ScalarProperty Name="hora_llegada" ColumnName="hora_llegada" />
+                <ScalarProperty Name="hora_atencion" ColumnName="hora_atencion" />
+                <ScalarProperty Name="sintomas" ColumnName="sintomas" />
+                <ScalarProperty Name="diagnostico" ColumnName="diagnostico" />
+                <ScalarProperty Name="bono_id" ColumnName="bono_id" />
+                <ScalarProperty Name="createdon" ColumnName="createdon" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="changedon" ColumnName="changedon" />
+                <ScalarProperty Name="changedby" ColumnName="changedby" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cancelacion">
+            <EntityTypeMapping TypeName="MedicureModel.Cancelacion">
+              <MappingFragment StoreEntitySet="Cancelacion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="turno_id" ColumnName="turno_id" />
+                <ScalarProperty Name="detalle_cancel" ColumnName="detalle_cancel" />
+                <ScalarProperty Name="fecha_cancel" ColumnName="fecha_cancel" />
+                <ScalarProperty Name="tipo_cancel_id" ColumnName="tipo_cancel_id" />
+                <ScalarProperty Name="createdon" ColumnName="createdon" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="changedon" ColumnName="changedon" />
+                <ScalarProperty Name="changedby" ColumnName="changedby" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Especialidad">
+            <EntityTypeMapping TypeName="MedicureModel.Especialidad">
+              <MappingFragment StoreEntitySet="Especialidad">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="frecuencia" ColumnName="frecuencia" />
+                <ScalarProperty Name="TipoEspecialidadId" ColumnName="TipoEspecialidadId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EspecialidadesProfesional">
+            <EntityTypeMapping TypeName="MedicureModel.EspecialidadesProfesional">
+              <MappingFragment StoreEntitySet="EspecialidadesProfesional">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EspecialidadId" ColumnName="EspecialidadId" />
+                <ScalarProperty Name="ProfesionalId" ColumnName="ProfesionalId" />
+                <ScalarProperty Name="createdon" ColumnName="createdon" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="changedon" ColumnName="changedon" />
+                <ScalarProperty Name="changedby" ColumnName="changedby" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadoCivil">
+            <EntityTypeMapping TypeName="MedicureModel.EstadoCivil">
+              <MappingFragment StoreEntitySet="EstadoCivil">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profesional">
+            <EntityTypeMapping TypeName="MedicureModel.Profesional">
+              <MappingFragment StoreEntitySet="Profesional">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="TipoDocumentoId" ColumnName="TipoDocumentoId" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="createdon" ColumnName="createdon" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="changedon" ColumnName="changedon" />
+                <ScalarProperty Name="changedby" ColumnName="changedby" />
+                <ScalarProperty Name="deletedon" ColumnName="deletedon" />
+                <ScalarProperty Name="deletedby" ColumnName="deletedby" />
+                <ScalarProperty Name="isdeleted" ColumnName="isdeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoCancelacion">
+            <EntityTypeMapping TypeName="MedicureModel.TipoCancelacion">
+              <MappingFragment StoreEntitySet="TipoCancelacion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoDia">
+            <EntityTypeMapping TypeName="MedicureModel.TipoDia">
+              <MappingFragment StoreEntitySet="TipoDia">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoDocumento">
+            <EntityTypeMapping TypeName="MedicureModel.TipoDocumento">
+              <MappingFragment StoreEntitySet="TipoDocumento">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoEspecialidad">
+            <EntityTypeMapping TypeName="MedicureModel.TipoEspecialidad">
+              <MappingFragment StoreEntitySet="TipoEspecialidad">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoReseva">
+            <EntityTypeMapping TypeName="MedicureModel.TipoReseva">
+              <MappingFragment StoreEntitySet="TipoReseva">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoSexo">
+            <EntityTypeMapping TypeName="MedicureModel.TipoSexo">
+              <MappingFragment StoreEntitySet="TipoSexo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Turno">
+            <EntityTypeMapping TypeName="MedicureModel.Turno">
+              <MappingFragment StoreEntitySet="Turno">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
+                <ScalarProperty Name="AfiliadoId" ColumnName="AfiliadoId" />
+                <ScalarProperty Name="EspecialidadProfesionalId" ColumnName="EspecialidadProfesionalId" />
+                <ScalarProperty Name="reserva" ColumnName="reserva" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="createdon" ColumnName="createdon" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="changedon" ColumnName="changedon" />
+                <ScalarProperty Name="changedby" ColumnName="changedby" />
+                <ScalarProperty Name="deletedon" ColumnName="deletedon" />
+                <ScalarProperty Name="deletedby" ColumnName="deletedby" />
+                <ScalarProperty Name="isdeleted" ColumnName="isdeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="MedicureModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
