@@ -1,0 +1,64 @@
+﻿@model MCGA.Data.Bono
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Bono</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_compra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_compra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_impresion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_impresion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.consumido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.consumido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Afiliado.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Afiliado.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Plan.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Plan.descripcion)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

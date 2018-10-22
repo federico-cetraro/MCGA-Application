@@ -1,0 +1,63 @@
+﻿@model IEnumerable<MCGA.Data.Atencion>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.hora_llegada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hora_atencion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sintomas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.diagnostico)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bono_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Turno.Observaciones)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.hora_llegada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hora_atencion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sintomas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.diagnostico)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bono_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Turno.Observaciones)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

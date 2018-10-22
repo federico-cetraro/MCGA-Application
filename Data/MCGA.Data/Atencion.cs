@@ -27,5 +27,6 @@ namespace MCGA.Data
         public string changedby { get; set; }
     
         public virtual Turno Turno { get; set; }
+        public virtual Bono Bono { get; set; }
     }
 }

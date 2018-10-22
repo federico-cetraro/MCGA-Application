@@ -1,0 +1,42 @@
+﻿@model MCGA.Data.AgendaCancelacion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AgendaCancelacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.detalle_cancel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.detalle_cancel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_cancel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_cancel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Agenda.createdby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Agenda.createdby)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,66 @@
+﻿@model MCGA.Data.Atencion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Atencion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.hora_llegada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hora_llegada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hora_atencion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hora_atencion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sintomas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sintomas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.diagnostico)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.diagnostico)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bono_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bono_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Turno.Observaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Turno.Observaciones)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

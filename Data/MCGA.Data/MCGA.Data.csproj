@@ -102,6 +102,9 @@
     <Compile Include="Atencion.cs">
       <DependentUpon>ModelMedicure.tt</DependentUpon>
     </Compile>
+    <Compile Include="Bono.cs">
+      <DependentUpon>ModelMedicure.tt</DependentUpon>
+    </Compile>
     <Compile Include="Cancelacion.cs">
       <DependentUpon>ModelMedicure.tt</DependentUpon>
     </Compile>
@@ -112,6 +115,9 @@
       <DependentUpon>ModelMedicure.tt</DependentUpon>
     </Compile>
     <Compile Include="EstadoCivil.cs">
+      <DependentUpon>ModelMedicure.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialAfiliado.cs">
       <DependentUpon>ModelMedicure.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelMedicure.Context.cs">
@@ -128,6 +134,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelMedicure.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan.cs">
+      <DependentUpon>ModelMedicure.tt</DependentUpon>
     </Compile>
     <Compile Include="Profesional.cs">
       <DependentUpon>ModelMedicure.tt</DependentUpon>

@@ -1,0 +1,58 @@
+﻿@model MCGA.Data.Bono
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Bono</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_compra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_compra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_impresion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_impresion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.consumido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.consumido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Afiliado.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Afiliado.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Plan.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Plan.descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

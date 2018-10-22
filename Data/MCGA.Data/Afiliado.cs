@@ -18,6 +18,8 @@ namespace MCGA.Data
         public Afiliado()
         {
             this.Turno = new HashSet<Turno>();
+            this.Bono = new HashSet<Bono>();
+            this.HistorialAfiliado = new HashSet<HistorialAfiliado>();
         }
     
         public int Id { get; set; }
@@ -48,5 +50,10 @@ namespace MCGA.Data
         public virtual ICollection<Turno> Turno { get; set; }
         public virtual TipoDocumento TipoDocumento { get; set; }
         public virtual TipoSexo TipoSexo { get; set; }
+        public virtual Plan Plan { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Bono> Bono { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HistorialAfiliado> HistorialAfiliado { get; set; }
     }
 }

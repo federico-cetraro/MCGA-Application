@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MedicureModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MedicureModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Afiliado">
           <Key>
             <PropertyRef Name="Id" />
@@ -133,6 +133,17 @@
           <Property Name="changedon" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="changedby" Type="nvarchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="Bono">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="plan_id" Type="int" Nullable="false" />
+          <Property Name="afiliado_id" Type="int" Nullable="false" />
+          <Property Name="fecha_compra" Type="datetime" Nullable="false" />
+          <Property Name="fecha_impresion" Type="datetime" />
+          <Property Name="consumido" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Cancelacion">
           <Key>
             <PropertyRef Name="Id" />
@@ -174,6 +185,44 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="descripcion" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Medicure.dbo.HistorialAfiliado' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="HistorialAfiliado">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="afiliado_id" />
+            <PropertyRef Name="fecha" />
+            <PropertyRef Name="plan_activo" />
+            <PropertyRef Name="motivo_cambio" />
+            <PropertyRef Name="createdon" />
+            <PropertyRef Name="changedon" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="afiliado_id" Type="int" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="plan_activo" Type="int" Nullable="false" />
+          <Property Name="motivo_cambio" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="createdon" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="createdby" Type="nvarchar" MaxLength="100" />
+          <Property Name="changedon" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="changedby" Type="int" />
+        </EntityType>
+        <EntityType Name="Plan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="precio_bono_consulta" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="precio_bono_farmacia" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="createdon" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="createdby" Type="nvarchar" MaxLength="100" />
+          <Property Name="changedon" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="changedby" Type="nvarchar" MaxLength="100" />
+          <Property Name="deletedon" Type="datetime2" Precision="7" />
+          <Property Name="deletedby" Type="nvarchar" MaxLength="100" />
+          <Property Name="isdeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Profesional">
           <Key>
@@ -271,6 +320,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Afiliados__plan___5629CD9C">
+          <End Role="Plan" Type="Self.Plan" Multiplicity="1" />
+          <End Role="Afiliado" Type="Self.Afiliado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plan">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Afiliado">
+              <PropertyRef Name="PlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Atencion__bono_i__06CD04F7">
+          <End Role="Bono" Type="Self.Bono" Multiplicity="1" />
+          <End Role="Atencion" Type="Self.Atencion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bono">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Atencion">
+              <PropertyRef Name="bono_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Atencione__turno__6B24EA82">
           <End Role="Turno" Type="Self.Turno" Multiplicity="1" />
           <End Role="Atencion" Type="Self.Atencion" Multiplicity="*" />
@@ -280,6 +353,30 @@
             </Principal>
             <Dependent Role="Atencion">
               <PropertyRef Name="turno_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bono__plan_id__08B54D69">
+          <End Role="Plan" Type="Self.Plan" Multiplicity="1" />
+          <End Role="Bono" Type="Self.Bono" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plan">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bono">
+              <PropertyRef Name="plan_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bonos__afiliado___59FA5E80">
+          <End Role="Afiliado" Type="Self.Afiliado" Multiplicity="1" />
+          <End Role="Bono" Type="Self.Bono" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Afiliado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bono">
+              <PropertyRef Name="afiliado_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -328,6 +425,30 @@
             </Principal>
             <Dependent Role="Especialidad">
               <PropertyRef Name="TipoEspecialidadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Historial__afili__74AE54BC">
+          <End Role="Afiliado" Type="Self.Afiliado" Multiplicity="1" />
+          <End Role="HistorialAfiliado" Type="Self.HistorialAfiliado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Afiliado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistorialAfiliado">
+              <PropertyRef Name="afiliado_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Historial__plan___75A278F5">
+          <End Role="Plan" Type="Self.Plan" Multiplicity="1" />
+          <End Role="HistorialAfiliado" Type="Self.HistorialAfiliado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plan">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistorialAfiliado">
+              <PropertyRef Name="plan_activo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -505,10 +626,12 @@
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Atencion" EntityType="Self.Atencion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bono" EntityType="Self.Bono" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cancelacion" EntityType="Self.Cancelacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Especialidad" EntityType="Self.Especialidad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EspecialidadesProfesional" EntityType="Self.EspecialidadesProfesional" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EstadoCivil" EntityType="Self.EstadoCivil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plan" EntityType="Self.Plan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Profesional" EntityType="Self.Profesional" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoCancelacion" EntityType="Self.TipoCancelacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoDia" EntityType="Self.TipoDia" Schema="dbo" store:Type="Tables" />
@@ -517,13 +640,42 @@
           <EntitySet Name="TipoReseva" EntityType="Self.TipoReseva" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoSexo" EntityType="Self.TipoSexo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Turno" EntityType="Self.Turno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HistorialAfiliado" EntityType="Self.HistorialAfiliado" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [HistorialAfiliado].[Id] AS [Id], 
+    [HistorialAfiliado].[afiliado_id] AS [afiliado_id], 
+    [HistorialAfiliado].[fecha] AS [fecha], 
+    [HistorialAfiliado].[plan_activo] AS [plan_activo], 
+    [HistorialAfiliado].[motivo_cambio] AS [motivo_cambio], 
+    [HistorialAfiliado].[createdon] AS [createdon], 
+    [HistorialAfiliado].[createdby] AS [createdby], 
+    [HistorialAfiliado].[changedon] AS [changedon], 
+    [HistorialAfiliado].[changedby] AS [changedby]
+    FROM [dbo].[HistorialAfiliado] AS [HistorialAfiliado]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__Afiliados__estad__5535A963" Association="Self.FK__Afiliados__estad__5535A963">
             <End Role="EstadoCivil" EntitySet="EstadoCivil" />
             <End Role="Afiliado" EntitySet="Afiliado" />
           </AssociationSet>
+          <AssociationSet Name="FK__Afiliados__plan___5629CD9C" Association="Self.FK__Afiliados__plan___5629CD9C">
+            <End Role="Plan" EntitySet="Plan" />
+            <End Role="Afiliado" EntitySet="Afiliado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Atencion__bono_i__06CD04F7" Association="Self.FK__Atencion__bono_i__06CD04F7">
+            <End Role="Bono" EntitySet="Bono" />
+            <End Role="Atencion" EntitySet="Atencion" />
+          </AssociationSet>
           <AssociationSet Name="FK__Atencione__turno__6B24EA82" Association="Self.FK__Atencione__turno__6B24EA82">
             <End Role="Turno" EntitySet="Turno" />
             <End Role="Atencion" EntitySet="Atencion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bono__plan_id__08B54D69" Association="Self.FK__Bono__plan_id__08B54D69">
+            <End Role="Plan" EntitySet="Plan" />
+            <End Role="Bono" EntitySet="Bono" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bonos__afiliado___59FA5E80" Association="Self.FK__Bonos__afiliado___59FA5E80">
+            <End Role="Afiliado" EntitySet="Afiliado" />
+            <End Role="Bono" EntitySet="Bono" />
           </AssociationSet>
           <AssociationSet Name="FK__Cancelaci__tipo___0A9D95DB" Association="Self.FK__Cancelaci__tipo___0A9D95DB">
             <End Role="TipoCancelacion" EntitySet="TipoCancelacion" />
@@ -540,6 +692,14 @@
           <AssociationSet Name="FK__Especiali__TipoE__0C85DE4D" Association="Self.FK__Especiali__TipoE__0C85DE4D">
             <End Role="TipoEspecialidad" EntitySet="TipoEspecialidad" />
             <End Role="Especialidad" EntitySet="Especialidad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Historial__afili__74AE54BC" Association="Self.FK__Historial__afili__74AE54BC">
+            <End Role="Afiliado" EntitySet="Afiliado" />
+            <End Role="HistorialAfiliado" EntitySet="HistorialAfiliado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Historial__plan___75A278F5" Association="Self.FK__Historial__plan___75A278F5">
+            <End Role="Plan" EntitySet="Plan" />
+            <End Role="HistorialAfiliado" EntitySet="HistorialAfiliado" />
           </AssociationSet>
           <AssociationSet Name="FK__Turnos__afiliado__797309D9" Association="Self.FK__Turnos__afiliado__797309D9">
             <End Role="Afiliado" EntitySet="Afiliado" />
@@ -594,8 +754,7 @@
             <End Role="Turno" EntitySet="Turno" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MedicureModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -629,6 +788,9 @@
           <NavigationProperty Name="Turno" Relationship="Self.FK__Turnos__afiliado__797309D9" FromRole="Afiliado" ToRole="Turno" />
           <NavigationProperty Name="TipoDocumento" Relationship="Self.FK_Afiliado_TipoDocumento" FromRole="Afiliado" ToRole="TipoDocumento" />
           <NavigationProperty Name="TipoSexo" Relationship="Self.FK_Afiliado_TipoSexo" FromRole="Afiliado" ToRole="TipoSexo" />
+          <NavigationProperty Name="Plan" Relationship="MedicureModel.FK__Afiliados__plan___5629CD9C" FromRole="Afiliado" ToRole="Plan" />
+          <NavigationProperty Name="Bono" Relationship="MedicureModel.FK__Bonos__afiliado___59FA5E80" FromRole="Afiliado" ToRole="Bono" />
+          <NavigationProperty Name="HistorialAfiliado" Relationship="MedicureModel.FK__Historial__afili__74AE54BC" FromRole="Afiliado" ToRole="HistorialAfiliado" />
         </EntityType>
         <EntityType Name="Agenda">
           <Key>
@@ -733,6 +895,7 @@
           <Property Name="changedon" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="changedby" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Turno" Relationship="Self.FK__Atencione__turno__6B24EA82" FromRole="Atencion" ToRole="Turno" />
+          <NavigationProperty Name="Bono" Relationship="MedicureModel.FK__Atencion__bono_i__06CD04F7" FromRole="Atencion" ToRole="Bono" />
         </EntityType>
         <EntityType Name="Cancelacion">
           <Key>
@@ -1186,7 +1349,161 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <EntitySet Name="Bono" EntityType="MedicureModel.Bono" />
+          <EntitySet Name="Plan" EntityType="MedicureModel.Plan" />
+          <EntitySet Name="HistorialAfiliado" EntityType="MedicureModel.HistorialAfiliado" />
+          <AssociationSet Name="FK__Afiliados__plan___5629CD9C" Association="MedicureModel.FK__Afiliados__plan___5629CD9C">
+            <End Role="Plan" EntitySet="Plan" />
+            <End Role="Afiliado" EntitySet="Afiliado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bonos__afiliado___59FA5E80" Association="MedicureModel.FK__Bonos__afiliado___59FA5E80">
+            <End Role="Afiliado" EntitySet="Afiliado" />
+            <End Role="Bono" EntitySet="Bono" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Historial__afili__74AE54BC" Association="MedicureModel.FK__Historial__afili__74AE54BC">
+            <End Role="Afiliado" EntitySet="Afiliado" />
+            <End Role="HistorialAfiliado" EntitySet="HistorialAfiliado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Atencion__bono_i__06CD04F7" Association="MedicureModel.FK__Atencion__bono_i__06CD04F7">
+            <End Role="Bono" EntitySet="Bono" />
+            <End Role="Atencion" EntitySet="Atencion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bono__plan_id__08B54D69" Association="MedicureModel.FK__Bono__plan_id__08B54D69">
+            <End Role="Plan" EntitySet="Plan" />
+            <End Role="Bono" EntitySet="Bono" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Historial__plan___75A278F5" Association="MedicureModel.FK__Historial__plan___75A278F5">
+            <End Role="Plan" EntitySet="Plan" />
+            <End Role="HistorialAfiliado" EntitySet="HistorialAfiliado" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Bono">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="plan_id" Type="Int32" Nullable="false" />
+          <Property Name="afiliado_id" Type="Int32" Nullable="false" />
+          <Property Name="fecha_compra" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fecha_impresion" Type="DateTime" Precision="3" />
+          <Property Name="consumido" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Afiliado" Relationship="MedicureModel.FK__Bonos__afiliado___59FA5E80" FromRole="Bono" ToRole="Afiliado" />
+          <NavigationProperty Name="Atencion" Relationship="MedicureModel.FK__Atencion__bono_i__06CD04F7" FromRole="Bono" ToRole="Atencion" />
+          <NavigationProperty Name="Plan" Relationship="MedicureModel.FK__Bono__plan_id__08B54D69" FromRole="Bono" ToRole="Plan" />
+        </EntityType>
+        <EntityType Name="Plan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="precio_bono_consulta" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="precio_bono_farmacia" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="createdon" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="createdby" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="changedon" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="changedby" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="deletedon" Type="DateTime" Precision="7" />
+          <Property Name="deletedby" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="isdeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Afiliado" Relationship="MedicureModel.FK__Afiliados__plan___5629CD9C" FromRole="Plan" ToRole="Afiliado" />
+          <NavigationProperty Name="Bono" Relationship="MedicureModel.FK__Bono__plan_id__08B54D69" FromRole="Plan" ToRole="Bono" />
+          <NavigationProperty Name="HistorialAfiliado" Relationship="MedicureModel.FK__Historial__plan___75A278F5" FromRole="Plan" ToRole="HistorialAfiliado" />
+        </EntityType>
+        <EntityType Name="HistorialAfiliado">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="afiliado_id" />
+            <PropertyRef Name="fecha" />
+            <PropertyRef Name="plan_activo" />
+            <PropertyRef Name="motivo_cambio" />
+            <PropertyRef Name="createdon" />
+            <PropertyRef Name="changedon" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="afiliado_id" Type="Int32" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="plan_activo" Type="Int32" Nullable="false" />
+          <Property Name="motivo_cambio" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="createdon" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="createdby" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="changedon" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="changedby" Type="Int32" />
+          <NavigationProperty Name="Afiliado" Relationship="MedicureModel.FK__Historial__afili__74AE54BC" FromRole="HistorialAfiliado" ToRole="Afiliado" />
+          <NavigationProperty Name="Plan" Relationship="MedicureModel.FK__Historial__plan___75A278F5" FromRole="HistorialAfiliado" ToRole="Plan" />
+        </EntityType>
+        <Association Name="FK__Afiliados__plan___5629CD9C">
+          <End Type="MedicureModel.Plan" Role="Plan" Multiplicity="1" />
+          <End Type="MedicureModel.Afiliado" Role="Afiliado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plan">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Afiliado">
+              <PropertyRef Name="PlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bonos__afiliado___59FA5E80">
+          <End Type="MedicureModel.Afiliado" Role="Afiliado" Multiplicity="1" />
+          <End Type="MedicureModel.Bono" Role="Bono" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Afiliado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bono">
+              <PropertyRef Name="afiliado_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Historial__afili__74AE54BC">
+          <End Type="MedicureModel.Afiliado" Role="Afiliado" Multiplicity="1" />
+          <End Type="MedicureModel.HistorialAfiliado" Role="HistorialAfiliado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Afiliado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistorialAfiliado">
+              <PropertyRef Name="afiliado_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Atencion__bono_i__06CD04F7">
+          <End Type="MedicureModel.Bono" Role="Bono" Multiplicity="1" />
+          <End Type="MedicureModel.Atencion" Role="Atencion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bono">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Atencion">
+              <PropertyRef Name="bono_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bono__plan_id__08B54D69">
+          <End Type="MedicureModel.Plan" Role="Plan" Multiplicity="1" />
+          <End Type="MedicureModel.Bono" Role="Bono" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plan">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bono">
+              <PropertyRef Name="plan_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Historial__plan___75A278F5">
+          <End Type="MedicureModel.Plan" Role="Plan" Multiplicity="1" />
+          <End Type="MedicureModel.HistorialAfiliado" Role="HistorialAfiliado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plan">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistorialAfiliado">
+              <PropertyRef Name="plan_activo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1465,6 +1782,50 @@
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Bono">
+            <EntityTypeMapping TypeName="MedicureModel.Bono">
+              <MappingFragment StoreEntitySet="Bono">
+                <ScalarProperty Name="consumido" ColumnName="consumido" />
+                <ScalarProperty Name="fecha_impresion" ColumnName="fecha_impresion" />
+                <ScalarProperty Name="fecha_compra" ColumnName="fecha_compra" />
+                <ScalarProperty Name="afiliado_id" ColumnName="afiliado_id" />
+                <ScalarProperty Name="plan_id" ColumnName="plan_id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plan">
+            <EntityTypeMapping TypeName="MedicureModel.Plan">
+              <MappingFragment StoreEntitySet="Plan">
+                <ScalarProperty Name="isdeleted" ColumnName="isdeleted" />
+                <ScalarProperty Name="deletedby" ColumnName="deletedby" />
+                <ScalarProperty Name="deletedon" ColumnName="deletedon" />
+                <ScalarProperty Name="changedby" ColumnName="changedby" />
+                <ScalarProperty Name="changedon" ColumnName="changedon" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="createdon" ColumnName="createdon" />
+                <ScalarProperty Name="precio_bono_farmacia" ColumnName="precio_bono_farmacia" />
+                <ScalarProperty Name="precio_bono_consulta" ColumnName="precio_bono_consulta" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HistorialAfiliado">
+            <EntityTypeMapping TypeName="MedicureModel.HistorialAfiliado">
+              <MappingFragment StoreEntitySet="HistorialAfiliado">
+                <ScalarProperty Name="changedby" ColumnName="changedby" />
+                <ScalarProperty Name="changedon" ColumnName="changedon" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="createdon" ColumnName="createdon" />
+                <ScalarProperty Name="motivo_cambio" ColumnName="motivo_cambio" />
+                <ScalarProperty Name="plan_activo" ColumnName="plan_activo" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="afiliado_id" ColumnName="afiliado_id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

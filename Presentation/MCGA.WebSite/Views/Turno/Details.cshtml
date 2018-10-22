@@ -1,0 +1,66 @@
+﻿@model MCGA.Data.Turno
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Turno</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hora)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.reserva)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.reserva)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Afiliado.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Afiliado.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EspecialidadesProfesional.createdby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EspecialidadesProfesional.createdby)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
