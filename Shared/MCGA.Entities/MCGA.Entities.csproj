@@ -46,12 +46,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Afiliado.cs" />
+    <Compile Include="Agenda.cs" />
+    <Compile Include="AgendaCancelacion.cs" />
+    <Compile Include="Atencion.cs" />
+    <Compile Include="Bono.cs" />
+    <Compile Include="Cancelacion.cs" />
+    <Compile Include="Especialidad.cs" />
+    <Compile Include="EspecialidadesProfesional.cs" />
+    <Compile Include="EstadoCivil.cs" />
+    <Compile Include="HistorialAfiliado.cs" />
     <Compile Include="ModelMedicure.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelMedicure.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Plan.cs" />
+    <Compile Include="Profesional.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoCancelacion.cs" />
+    <Compile Include="TipoDia.cs" />
+    <Compile Include="TipoDocumento.cs" />
+    <Compile Include="TipoEspecialidad.cs" />
+    <Compile Include="TipoReseva.cs" />
+    <Compile Include="TipoSexo.cs" />
+    <Compile Include="Turno.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -61,6 +80,28 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ModelMedicure.Context.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Business\MCGA.Business\MCGA.Business.csproj">
+      <Project>{8b16f38f-32f0-4b6c-848a-404014161af2}</Project>
+      <Name>MCGA.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\MCGA.Data\MCGA.Data.csproj">
+      <Project>{21a72d4e-4480-4453-a9a4-e2458b84e7f7}</Project>
+      <Name>MCGA.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Presentation\MCGA.UI.Process\MCGA.UI.Process.csproj">
+      <Project>{8dce9c31-1356-475e-bb8e-fe16554b4be0}</Project>
+      <Name>MCGA.UI.Process</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Presentation\MCGA.WebSite\MCGA.WebSite.csproj">
+      <Project>{a012fce5-bc7d-44cb-aa85-b9463b68cb6b}</Project>
+      <Name>MCGA.WebSite</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MCGA.Framework\MCGA.Framework.csproj">
+      <Project>{81cf6df1-4e5a-4fb8-9b3a-791b9f09c51d}</Project>
+      <Name>MCGA.Framework</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

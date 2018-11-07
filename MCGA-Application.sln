@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{67820E04-7F97-40B5-B075-72B917B4FB52}"
 EndProject
@@ -20,6 +20,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCGA.Business", "Business\MCGA.Business\MCGA.Business.csproj", "{8B16F38F-32F0-4B6C-848A-404014161AF2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCGA.UI.Process", "Presentation\MCGA.UI.Process\MCGA.UI.Process.csproj", "{8DCE9C31-1356-475E-BB8E-FE16554B4BE0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{21A72D4E-4480-4453-A9A4-E2458B84E7F7} = {21A72D4E-4480-4453-A9A4-E2458B84E7F7}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCGA.WebSite", "Presentation\MCGA.WebSite\MCGA.WebSite.csproj", "{A012FCE5-BC7D-44CB-AA85-B9463B68CB6B}"
 EndProject
@@ -64,5 +67,8 @@ Global
 		{8B16F38F-32F0-4B6C-848A-404014161AF2} = {4D9D9F81-D0FB-46AF-8A94-4DCA6C3368A2}
 		{8DCE9C31-1356-475E-BB8E-FE16554B4BE0} = {EDC8611C-47C1-493D-A326-4ED2659F7AB7}
 		{A012FCE5-BC7D-44CB-AA85-B9463B68CB6B} = {EDC8611C-47C1-493D-A326-4ED2659F7AB7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {698B0636-AE4F-4BC6-8635-1089D02FE10A}
 	EndGlobalSection
 EndGlobal

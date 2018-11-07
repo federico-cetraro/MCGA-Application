@@ -176,16 +176,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Shared\MCGA.Entities\MCGA.Entities.csproj">
-      <Project>{9cc9e395-4e72-47fc-9f03-c1ca9e69261d}</Project>
-      <Name>MCGA.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Shared\MCGA.Framework\MCGA.Framework.csproj">
-      <Project>{81CF6DF1-4E5A-4FB8-9B3A-791B9F09C51D}</Project>
-      <Name>MCGA.Framework</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +189,12 @@
       <DependentUpon>ModelMedicure.edmx</DependentUpon>
       <LastGenOutput>ModelMedicure.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Business\MCGA.Business\MCGA.Business.csproj">
+      <Project>{8b16f38f-32f0-4b6c-848a-404014161af2}</Project>
+      <Name>MCGA.Business</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

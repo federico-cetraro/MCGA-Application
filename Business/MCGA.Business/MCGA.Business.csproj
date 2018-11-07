@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -40,21 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AfiliadoComponent.cs" />
+    <Compile Include="AgendaComponent.cs" />
+    <Compile Include="EspecialidadComponent.cs" />
+    <Compile Include="EspecialidadesProfesionalComponent.cs" />
+    <Compile Include="EstadoCivilComponent.cs" />
+    <Compile Include="PlanComponent.cs" />
+    <Compile Include="ProfesionalComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Data\MCGA.Data\MCGA.Data.csproj">
-      <Project>{21A72D4E-4480-4453-A9A4-E2458B84E7F7}</Project>
-      <Name>MCGA.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Shared\MCGA.Entities\MCGA.Entities.csproj">
-      <Project>{9CC9E395-4E72-47FC-9F03-C1CA9E69261D}</Project>
-      <Name>MCGA.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Shared\MCGA.Framework\MCGA.Framework.csproj">
-      <Project>{81CF6DF1-4E5A-4FB8-9B3A-791B9F09C51D}</Project>
-      <Name>MCGA.Framework</Name>
-    </ProjectReference>
+    <Compile Include="TipoCancelacionComponent.cs" />
+    <Compile Include="TipoDiaComponent.cs" />
+    <Compile Include="TipoDocumentoComponent.cs" />
+    <Compile Include="TipoEspecialidadComponent.cs" />
+    <Compile Include="TipoResevaComponent.cs" />
+    <Compile Include="TipoSexoComponent.cs" />
+    <Compile Include="TurnoComponent.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
