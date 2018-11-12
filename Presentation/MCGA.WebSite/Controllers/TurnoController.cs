@@ -40,7 +40,7 @@ namespace MCGA.WebSite.Controllers
         public ActionResult Create()
         {
             ViewBag.AfiliadoId = new SelectList(db.Afiliado, "Id", "Nombre");
-            ViewBag.EspecialidadProfesionalId = new SelectList(db.EspecialidadesProfesional, "Id", "createdby");
+            ViewBag.EspecialidadProfesionalId = new SelectList(db.EspecialidadesProfesional.Include(e => e.Especialidad).Include(e => e.Profesional).ToList().Select(o => new { o.Id, Especialidad = string.Format("{0} ({1} {2})", o.Especialidad.descripcion, o.Profesional.Nombre, o.Profesional.Apellido) }).ToList(), "Id", "Especialidad");
             return View();
         }
 
@@ -59,7 +59,7 @@ namespace MCGA.WebSite.Controllers
             }
 
             ViewBag.AfiliadoId = new SelectList(db.Afiliado, "Id", "Nombre", turno.AfiliadoId);
-            ViewBag.EspecialidadProfesionalId = new SelectList(db.EspecialidadesProfesional, "Id", "createdby", turno.EspecialidadProfesionalId);
+            ViewBag.EspecialidadProfesionalId = new SelectList(db.EspecialidadesProfesional.Include(e => e.Especialidad).Include(e => e.Profesional).ToList().Select(o => new { o.Id, Especialidad = string.Format("{0} ({1} {2})", o.Especialidad.descripcion, o.Profesional.Nombre, o.Profesional.Apellido) }).ToList(), "Id", "Especialidad");
             return View(turno);
         }
 
@@ -76,7 +76,7 @@ namespace MCGA.WebSite.Controllers
                 return HttpNotFound();
             }
             ViewBag.AfiliadoId = new SelectList(db.Afiliado, "Id", "Nombre", turno.AfiliadoId);
-            ViewBag.EspecialidadProfesionalId = new SelectList(db.EspecialidadesProfesional, "Id", "createdby", turno.EspecialidadProfesionalId);
+            ViewBag.EspecialidadProfesionalId = new SelectList(db.EspecialidadesProfesional.Include(e => e.Especialidad).Include(e => e.Profesional).ToList().Select(o => new { o.Id, Especialidad = string.Format("{0} ({1} {2})", o.Especialidad.descripcion, o.Profesional.Nombre, o.Profesional.Apellido) }).ToList(), "Id", "Especialidad");
             return View(turno);
         }
 
@@ -94,7 +94,8 @@ namespace MCGA.WebSite.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.AfiliadoId = new SelectList(db.Afiliado, "Id", "Nombre", turno.AfiliadoId);
-            ViewBag.EspecialidadProfesionalId = new SelectList(db.EspecialidadesProfesional, "Id", "createdby", turno.EspecialidadProfesionalId);
+            ViewBag.EspecialidadProfesionalId = new SelectList(db.EspecialidadesProfesional.Include(e => e.Especialidad).Include(e => e.Profesional).ToList().Select(o => new { o.Id, Especialidad = string.Format("{0} ({1} {2})", o.Especialidad.descripcion, o.Profesional.Nombre, o.Profesional.Apellido) }).ToList(), "Id", "Especialidad");
+
             return View(turno);
         }
 
