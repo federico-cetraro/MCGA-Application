@@ -10,6 +10,7 @@ using MCGA.Data;
 
 namespace MCGA.WebSite.Controllers
 {
+    [Authorize]
     public class AgendaController : Controller
     {
         private MedicureContexto db = new MedicureContexto();

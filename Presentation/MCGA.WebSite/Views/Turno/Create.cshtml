@@ -7,17 +7,17 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Turno</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-10" data-toggle="tooltip" data-placement="right" title="FORMATO MM/DD/AAAA">
                 @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
             </div>
@@ -25,7 +25,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Hora, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-10"  data-toggle="tooltip" data-placement="right" title="FORMATO HH:MM">
                 @Html.EditorFor(model => model.Hora, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Hora, "", new { @class = "text-danger" })
             </div>
@@ -33,7 +33,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.AfiliadoId, "AfiliadoId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-10"  data-toggle="tooltip" data-placement="right" title="SELECCIONESE, POR PROBLEMAS DEL SISTEMA, PUEDE LLEGAR A VISUALIZAR OTROS NOMBRES">
                 @Html.DropDownList("AfiliadoId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.AfiliadoId, "", new { @class = "text-danger" })
             </div>
@@ -75,6 +75,12 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
 }

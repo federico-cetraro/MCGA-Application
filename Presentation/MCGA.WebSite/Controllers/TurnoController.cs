@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using MCGA.Data;
 
 namespace MCGA.WebSite.Controllers
-{
+{   [Authorize]
     public class TurnoController : Controller
     {
         private MedicureContexto db = new MedicureContexto();
