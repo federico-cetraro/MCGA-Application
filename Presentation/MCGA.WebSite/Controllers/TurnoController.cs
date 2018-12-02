@@ -10,6 +10,7 @@ using MCGA.Data;
 
 namespace MCGA.WebSite.Controllers
 {   [Authorize]
+    [ValidateInput(false)]
     public class TurnoController : Controller
     {
         private MedicureContexto db = new MedicureContexto();
@@ -20,7 +21,7 @@ namespace MCGA.WebSite.Controllers
             var turno = db.Turno.Include(t => t.Afiliado).Include(t => t.EspecialidadesProfesional);
             return View(turno.ToList());
         }
-
+        [ValidateInput(false)]
         // GET: Turno/Details/5
         public ActionResult Details(int? id)
         {
@@ -35,7 +36,7 @@ namespace MCGA.WebSite.Controllers
             }
             return View(turno);
         }
-
+        [ValidateInput(false)]
         // GET: Turno/Create
         public ActionResult Create()
         {
@@ -48,6 +49,7 @@ namespace MCGA.WebSite.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Fecha,Hora,AfiliadoId,EspecialidadProfesionalId,reserva,Observaciones,createdon,createdby,changedon,changedby,deletedon,deletedby,isdeleted")] Turno turno)
         {
@@ -62,7 +64,7 @@ namespace MCGA.WebSite.Controllers
             ViewBag.EspecialidadProfesionalId = new SelectList(db.EspecialidadesProfesional.Include(e => e.Especialidad).Include(e => e.Profesional).ToList().Select(o => new { o.Id, Especialidad = string.Format("{0} ({1} {2})", o.Especialidad.descripcion, o.Profesional.Nombre, o.Profesional.Apellido) }).ToList(), "Id", "Especialidad");
             return View(turno);
         }
-
+        [ValidateInput(false)]
         // GET: Turno/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -84,6 +86,7 @@ namespace MCGA.WebSite.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Fecha,Hora,AfiliadoId,EspecialidadProfesionalId,reserva,Observaciones,createdon,createdby,changedon,changedby,deletedon,deletedby,isdeleted")] Turno turno)
         {
@@ -98,7 +101,7 @@ namespace MCGA.WebSite.Controllers
 
             return View(turno);
         }
-
+        [ValidateInput(false)]
         // GET: Turno/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -116,6 +119,7 @@ namespace MCGA.WebSite.Controllers
 
         // POST: Turno/Delete/5
         [HttpPost, ActionName("Delete")]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -61,7 +62,21 @@ namespace MCGA.WebSite.Controllers
             ViewBag.TipoDocumentoId = new SelectList(db.TipoDocumento, "Id", "descripcion", profesional.TipoDocumentoId);
             return View(profesional);
         }
+        [HttpPost]
+        public void Upload()
+        {
+            for (int i = 0; i < Request.Files.Count; i++)
+            {
+                var file = Request.Files[i];
 
+                var fileName = Path.GetFileName(file.FileName);
+
+                var path = Path.Combine(Server.MapPath("~/ImagenesProfesional/"), fileName);
+                
+                file.SaveAs(path);
+            }
+
+        }
         // GET: Profesional/Edit/5
         public ActionResult Edit(int? id)
         {

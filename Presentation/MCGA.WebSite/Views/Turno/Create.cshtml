@@ -1,86 +1,96 @@
 ﻿@model MCGA.Data.Turno
+    @{
+        ViewBag.Title = "Create";
+    }
 
-@{
-    ViewBag.Title = "Create";
-}
-
-<h2>Create</h2>
+    <h2>Create</h2>
 
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>Turno</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10" data-toggle="tooltip" data-placement="right" title="FORMATO MM/DD/AAAA">
-                @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
+        <div class="form-horizontal">
+            <h4>Turno</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10" data-toggle="tooltip" data-placement="right" title="FORMATO MM/DD/AAAA">
+                    @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Hora, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10" data-toggle="tooltip" data-placement="right" title="FORMATO HH:MM">
+                    @Html.EditorFor(model => model.Hora, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Hora, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.AfiliadoId, "AfiliadoId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10" data-toggle="tooltip" data-placement="right" title="SELECCIONESE, POR PROBLEMAS DEL SISTEMA, PUEDE LLEGAR A VISUALIZAR OTROS NOMBRES">
+                    @Html.DropDownList("AfiliadoId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.AfiliadoId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EspecialidadProfesionalId, "EspecialidadProfesionalId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("EspecialidadProfesionalId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.EspecialidadProfesionalId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.reserva, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.reserva, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.reserva, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Observaciones, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-12" id="Observaciones">
+                    @Html.ValidationMessageFor(model => model.Observaciones, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
             </div>
         </div>
+    }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Hora, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10"  data-toggle="tooltip" data-placement="right" title="FORMATO HH:MM">
-                @Html.EditorFor(model => model.Hora, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Hora, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.AfiliadoId, "AfiliadoId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10"  data-toggle="tooltip" data-placement="right" title="SELECCIONESE, POR PROBLEMAS DEL SISTEMA, PUEDE LLEGAR A VISUALIZAR OTROS NOMBRES">
-                @Html.DropDownList("AfiliadoId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.AfiliadoId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.EspecialidadProfesionalId, "EspecialidadProfesionalId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("EspecialidadProfesionalId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.EspecialidadProfesionalId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.reserva, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.reserva, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.reserva, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Observaciones, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Observaciones, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Observaciones, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
-        })
-    </script>
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        <script>
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+        </script>
+        <script src="~/Scripts/tinymce/tinymce.min.js"></script>
+        <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=2bd0eiarvnm4n97sskltyemjt5o9lik6twga3b5fel9rtxhy"></script>
+
+        <script src="~/Scripts/tinymce/jquery.tinymce.min.js"></script>
+        <script>
+            tinymce.init({
+                selector: "div#Observaciones",
+
+            });
+        </script>
+    }
+
+
