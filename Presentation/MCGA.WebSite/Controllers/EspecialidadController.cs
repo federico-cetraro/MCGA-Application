@@ -15,6 +15,12 @@ namespace MCGA.WebSite.Controllers
     {
         private MedicureContexto db = new MedicureContexto();
 
+        public JsonResult GetEspecialidad(string Areas, string term = "")
+        {
+            var lista = db.Especialidad.Include(e => e.TipoEspecialidad).ToList().Where(o => o.descripcion.ToUpper().Contains(term.ToUpper())).OrderBy(o => o.descripcion).Select(o => new { Id = o.Id, Name = o.descripcion }).ToList();
+            return Json(lista, JsonRequestBehavior.AllowGet);
+        }
+
         // GET: Especialidad
         public ActionResult Index()
         {

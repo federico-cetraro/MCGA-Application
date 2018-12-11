@@ -15,6 +15,13 @@ namespace MCGA.WebSite.Controllers
     {
         private MedicureContexto db = new MedicureContexto();
 
+        public JsonResult GetAfiliado(string Areas, string term = "")
+        {
+            var lista = db.Afiliado.Include(a => a.EstadoCivil).Include(a => a.Plan).Include(a => a.TipoDocumento).Include(a => a.TipoSexo).Where(a => a.isdeleted == false).ToList().Where(o => o.Nombre.ToUpper().Contains(term.ToUpper()) || o.Apellido.ToUpper().Contains(term.ToUpper())).OrderBy(o => o.Nombre).OrderBy(o => o.Apellido).Select(o => new { Id = o.Id, Name = string.Format("{0} {1} Nº {2} ({3} {4})", o.Nombre, o.Apellido, o.NumeroAfiliado, o.TipoDocumento.descripcion, o.Numero) }).ToList();
+
+            return Json(lista, JsonRequestBehavior.AllowGet);
+        }
+
         // GET: Afiliado
         public ActionResult Index()
         {

@@ -10,7 +10,13 @@ namespace MCGA.WebSite
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/lib/jquery-ui.min.js",
+                         "~/Scripts/lib/moment.min.js",
+                        "~/Scripts/stacktable.js",
+                        "~/Scripts/moment.js",
+                        "~/Scripts/fullcalendar/fullcalendar.min.js",
+                        "~/Scripts/locale-all.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -26,6 +32,9 @@ namespace MCGA.WebSite
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-materia.css",
+                      "~/Content/themes/base/jquery-ui.css",
+                      "~/Content/fullcalendar.min.css",
+                      "~/Scripts/lib/cupertino/jquery-ui.min.css",
                       "~/Content/site.css"));
         }
     }

@@ -111,7 +111,7 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 <script>
-    $(document).ready(function () {
+  $(document).ready(function () {
         $("#Save").click(function () {
             var formData = new FormData();
             var totalFiles = document.getElementById("FileUpload").files.length;
@@ -120,6 +120,8 @@
 
                 formData.append("FileUpload", file);
             }
+            formData.append("Apellido", $('#Apellido').val());
+            formData.append("Nombre", $('#Nombre').val());
             $.ajax({
                 type: "POST",
                 url: '@Url.Action("Upload")',

@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Net;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using MCGA.Data;
@@ -14,6 +16,71 @@ namespace MCGA.WebSite.Controllers
     public class AgendaController : Controller
     {
         private MedicureContexto db = new MedicureContexto();
+
+        public JsonResult GetFechasDisponiblesByIdEspecialidadProfesional(int idEspecialidadProfesional = 0)
+        {
+            List<Agenda> listAgenda = db.Agenda.Include(a => a.EspecialidadesProfesional).Include(a => a.TipoDia).Where(a => a.isdeleted == false).ToList().Where(o => o.EspecialidadProfesionalId == idEspecialidadProfesional && o.AgendaCancelacion.Count == 0 && o.fecha_hasta>=DateTime.UtcNow).ToList();
+            if (listAgenda.Count > 0)
+            {
+                List<string> listaFecha = new List<string>();
+                foreach (Agenda agenda in listAgenda)
+                {
+                    DateTime fecha = DateTime.Now.Date;// agenda.fecha_desde;
+                                        
+                    while (fecha <= agenda.fecha_hasta)
+                    {
+                        //Ver si atiende ese dia
+                        if (fecha.DayOfWeek.ToString().ToUpper() == agenda.TipoDia.descripcion.ToString().ToUpper())
+                        {
+                            //Cantidad de horas que atiende en el día
+                            int cantidadHoras =
+                                (
+                                    new DateTime(fecha.Year, fecha.Month, fecha.Day, agenda.hora_hasta.Hours, agenda.hora_hasta.Minutes, 0)
+                                    -
+                                    new DateTime(fecha.Year, fecha.Month, fecha.Day, agenda.hora_desde.Hours, agenda.hora_desde.Minutes, 0)
+                                ).Hours;
+
+                            //Verificar si ese día ya tiene todo agendado
+                            if (db.Turno.Include(t => t.Afiliado).Include(t => t.EspecialidadesProfesional).Where(t => t.isdeleted == false).ToList().Where(o => o.Fecha == fecha && o.EspecialidadProfesionalId == idEspecialidadProfesional).Count() != cantidadHoras)
+                            {
+                                listaFecha.Add(fecha.ToString("yyyy-MM-dd"));
+                            }
+                        }
+                        fecha = fecha.AddDays(1);
+                    }
+                }
+                return Json(listaFecha, JsonRequestBehavior.AllowGet);
+            }
+            else
+                return Json(null, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetHorarioDisponiblesByIdEspecialidadProfesionalFecha(int idEspecialidadProfesional, DateTime fecha)
+        {
+            int tipoDiaId = db.TipoDia.ToList().Where(o => o.descripcion.ToUpper() == fecha.DayOfWeek.ToString().ToUpper()).FirstOrDefault().Id;
+            Agenda agenda = db.Agenda.Include(a => a.EspecialidadesProfesional).Include(a => a.TipoDia).Where(a => a.isdeleted == false).ToList().Where(o => o.EspecialidadProfesionalId == idEspecialidadProfesional && o.TipoDiaId == tipoDiaId && fecha >= o.fecha_desde && fecha <= o.fecha_hasta && o.AgendaCancelacion.Count == 0).FirstOrDefault();
+            if (agenda != null)
+            {
+                List<dynamic> listaHora = new List<dynamic>();
+                TimeSpan hora = agenda.hora_desde;
+                while (hora <= agenda.hora_hasta)
+                {
+                    //ver si hay turno con esa hora y fecha
+                    if (db.Turno.Include(t => t.Afiliado).Include(t => t.EspecialidadesProfesional).Where(t => t.isdeleted == false).ToList().FirstOrDefault(o => o.Fecha == fecha && o.Hora == hora && o.EspecialidadProfesionalId == idEspecialidadProfesional) == null)
+                    {
+                        listaHora.Add(new
+                        {
+                            HoraText = hora.ToString(@"hh\:mm"),
+                            HoraValue = hora.ToString(@"hh\:mm")
+                        });
+                    }
+                    hora = hora.Add(new TimeSpan(1, 0, 0));
+                }
+                return Json(listaHora, JsonRequestBehavior.AllowGet);
+            }
+            else
+                return Json(null, JsonRequestBehavior.AllowGet);
+        }
 
         // GET: Agenda
         public ActionResult Index()

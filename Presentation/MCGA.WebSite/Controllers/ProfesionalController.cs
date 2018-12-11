@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using MCGA.Data;
 
+
 namespace MCGA.WebSite.Controllers
 {
     [Authorize]
@@ -63,13 +64,15 @@ namespace MCGA.WebSite.Controllers
             return View(profesional);
         }
         [HttpPost]
-        public void Upload()
+        public void Upload(string Apellido, string Nombre)
         {
             for (int i = 0; i < Request.Files.Count; i++)
             {
                 var file = Request.Files[i];
-
+                
                 var fileName = Path.GetFileName(file.FileName);
+
+                fileName = Apellido+"-"+Nombre+".jpg";
 
                 var path = Path.Combine(Server.MapPath("~/ImagenesProfesional/"), fileName);
                 

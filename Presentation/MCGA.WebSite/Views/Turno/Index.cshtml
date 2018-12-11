@@ -12,16 +12,22 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Fecha)
+            @Html.Raw("Fecha")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Hora)
+            @Html.Raw("Hora")
+        </th>
+        <th>
+            @Html.Raw("Especialidad")
+        </th>
+        <th>
+            @Html.Raw("Profesional")
+        </th>
+        <th>
+            @Html.Raw("Afiliado")
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Observaciones)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Afiliado.Nombre)
         </th>
 
         <th></th>
@@ -37,12 +43,19 @@
             @Html.DisplayFor(modelItem => item.Hora)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Observaciones)
+            @Html.DisplayFor(modelItem => item.EspecialidadesProfesional.Especialidad.descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EspecialidadesProfesional.Profesional.Nombre)
+            @Html.DisplayFor(modelItem => item.EspecialidadesProfesional.Profesional.Apellido)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Afiliado.Nombre)
+            @Html.DisplayFor(modelItem => item.Afiliado.Apellido)
         </td>
-
+        <td>
+            @Html.Raw(item.Observaciones)
+        </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
             @Html.ActionLink("Details", "Details", new { id = item.Id }) |
