@@ -7,7 +7,7 @@
 <h2>Listado de Profesionales</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Registrar Profesional", "Create")
 </p>
 <table class="table">
     <tr>
@@ -24,15 +24,17 @@
             @Html.DisplayNameFor(model => model.Numero)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FechaNacimiento)
+            @Html.Raw("Nacimiento")
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Matricula)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TipoDocumento.descripcion)
+            @Html.DisplayNameFor(model => model.TipoDocumento)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Numero)
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -50,13 +52,16 @@
             @Html.DisplayFor(modelItem => item.Numero)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.FechaNacimiento)
+            @item.FechaNacimiento.ToString("dd/MM/yyyy")
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Matricula)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TipoDocumento.descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Numero)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

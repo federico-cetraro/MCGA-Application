@@ -3,11 +3,17 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
+<style>
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+</style>
+<h2>Afiliados Registrados</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Registrar Afiliado", "Create")
 </p>
 <table class="table">
     <tr>
@@ -36,22 +42,16 @@
             @Html.DisplayNameFor(model => model.NumeroAfiliado)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PlanId)
+            @Html.DisplayNameFor(model => model.EstadoCivil)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Foto)
+            @Html.DisplayNameFor(model => model.TipoDocumento)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Habilitado)
+            Numero Documento
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EstadoCivil.descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TipoDocumento.descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TipoSexo.descripcion)
+            @Html.DisplayNameFor(model => model.TipoSexo)
         </th>
         <th></th>
     </tr>
@@ -77,19 +77,10 @@
             @Html.DisplayFor(modelItem => item.Email)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.FechaNacimiento)
+            @item.FechaNacimiento.ToString("dd/MM/yyyy")
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.NumeroAfiliado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PlanId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Foto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Habilitado)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.EstadoCivil.descripcion)
@@ -98,12 +89,15 @@
             @Html.DisplayFor(modelItem => item.TipoDocumento.descripcion)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Numero)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.TipoSexo.descripcion)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
         </td>
     </tr>
 }

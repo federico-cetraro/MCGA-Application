@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MCGA.Data;
+using Rotativa;
 
 namespace MCGA.WebSite.Controllers
 {   [Authorize]
@@ -21,6 +22,27 @@ namespace MCGA.WebSite.Controllers
             var turno = db.Turno.Include(t => t.Afiliado).Include(t => t.EspecialidadesProfesional);
             return View(turno.ToList());
         }
+        [Authorize]
+        [HttpGet]
+        [Route("Turno/_ListadoPDF")]
+        [System.Web.Mvc.AllowAnonymous]
+        public ActionResult _ListadoPDF()
+        {
+            var turno = db.Turno.Include(t => t.Afiliado).Include(t => t.EspecialidadesProfesional);
+            return View(turno.ToList());
+        }
+        [Authorize]
+        [HttpGet]
+        [System.Web.Mvc.AllowAnonymous]
+        public ActionResult DescargarListadoPDF() => new ViewAsPdf(@"_ListadoPDF", db.Turno)
+        {
+            FileName = "Listado-Turnos-Medicos-" + DateTime.Today + ".pdf",
+            PageSize = Rotativa.Options.Size.A4,
+            PageOrientation = Rotativa.Options.Orientation.Landscape,
+            CustomSwitches = "--footer-center \"  Creado: " + DateTime.Now.Date.ToString("dd/MM/yyyy") + "  Pagina: [page]/[toPage]\"" +
+          " --footer-line --footer-font-size \"12\" --footer-spacing 1 --footer-font-name \"Segoe UI\"",
+            PageMargins = { Left = 20, Bottom = 20, Right = 20, Top = 20 }
+        };
         [ValidateInput(false)]
         // GET: Turno/Details/5
         public ActionResult Details(int? id)

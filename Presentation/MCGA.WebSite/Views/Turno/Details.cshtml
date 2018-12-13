@@ -15,7 +15,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Fecha)
+            @Model.Fecha.ToString("dd/MM/yyyy")
         </dd>
 
         <dt>
@@ -39,7 +39,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Observaciones)
+            @Html.Raw(Model.Observaciones)
         </dd>
 
         <dt>

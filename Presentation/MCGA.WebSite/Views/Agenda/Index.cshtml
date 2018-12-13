@@ -4,30 +4,27 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Agenda por Profesional</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Agenda", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.fecha_desde)
+            @Html.Raw("Desde")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.fecha_hasta)
+            @Html.Raw("Hasta")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.hora_desde)
+            @Html.Raw("Hora Inicial")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.hora_hasta)
+            @Html.Raw("Hora Final")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EspecialidadesProfesional.createdby)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TipoDia.descripcion)
+            @Html.Raw("Dia de Atencion")
         </th>
         <th></th>
     </tr>
@@ -35,19 +32,16 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.fecha_desde)
+            @item.fecha_desde.ToString("dd/MM/yyyy")
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.fecha_hasta)
+            @item.fecha_hasta.ToString("dd/MM/yyyy")
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.hora_desde)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.hora_hasta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EspecialidadesProfesional.createdby)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TipoDia.descripcion)

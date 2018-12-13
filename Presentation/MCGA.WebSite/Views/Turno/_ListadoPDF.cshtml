@@ -1,0 +1,69 @@
+﻿@model IEnumerable<MCGA.Data.Turno>
+
+@{
+    ViewBag.Title = "Listado de Turnos";
+}
+@{
+    Layout = null;
+}
+<style>
+    th, td {
+        padding: 15px;
+        height: 50px;
+    }
+    table {
+        width: 80%;
+        border: 2px solid black;
+    }
+</style>
+<h2>Listado de Turnos</h2>
+<h3>Al @DateTime.Today</h3>
+<table class="table" align="center" border="1">
+    <tr>
+        <th>
+            @Html.Raw("Profesional")
+        </th>
+        <th>
+            @Html.Raw("Especialidad")
+        </th>
+        <th>
+            @Html.Raw("Afiliado")
+        </th>
+        <th>
+            @Html.Raw("Turno Programado")
+        </th>
+        <th>
+            @Html.Raw("Horario Programado")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EspecialidadesProfesional.Profesional.Nombre)
+            @Html.DisplayFor(modelItem => item.EspecialidadesProfesional.Profesional.Apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EspecialidadesProfesional.Especialidad.descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Afiliado.Nombre)
+            @Html.DisplayFor(modelItem => item.Afiliado.Apellido)
+        </td>
+        <td>
+            @item.Fecha.ToString("dd/MM/yyyy")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hora)
+        </td>
+        <td>
+            @Html.Raw(item.Observaciones)
+        </td>
+    </tr>
+    }
+
+</table>

@@ -50,6 +50,7 @@ namespace MCGA.WebSite.Controllers
             ViewBag.EstadoCivilId = new SelectList(db.EstadoCivil, "Id", "descripcion");
             ViewBag.TipoDocumentoId = new SelectList(db.TipoDocumento, "Id", "descripcion");
             ViewBag.TipoSexoId = new SelectList(db.TipoSexo, "Id", "descripcion");
+            ViewBag.PlanId = new SelectList(db.Plan.Where(p => p.isdeleted == false).ToList(), "Id", "descripcion");
             return View();
         }
 
@@ -70,6 +71,7 @@ namespace MCGA.WebSite.Controllers
             ViewBag.EstadoCivilId = new SelectList(db.EstadoCivil, "Id", "descripcion", afiliado.EstadoCivilId);
             ViewBag.TipoDocumentoId = new SelectList(db.TipoDocumento, "Id", "descripcion", afiliado.TipoDocumentoId);
             ViewBag.TipoSexoId = new SelectList(db.TipoSexo, "Id", "descripcion", afiliado.TipoSexoId);
+            ViewBag.PlanId = new SelectList(db.Plan.Where(p => p.isdeleted == false).ToList(), "Id", "descripcion");
             return View(afiliado);
         }
 
@@ -88,6 +90,7 @@ namespace MCGA.WebSite.Controllers
             ViewBag.EstadoCivilId = new SelectList(db.EstadoCivil, "Id", "descripcion", afiliado.EstadoCivilId);
             ViewBag.TipoDocumentoId = new SelectList(db.TipoDocumento, "Id", "descripcion", afiliado.TipoDocumentoId);
             ViewBag.TipoSexoId = new SelectList(db.TipoSexo, "Id", "descripcion", afiliado.TipoSexoId);
+            ViewBag.PlanId = new SelectList(db.Plan.Where(p => p.isdeleted == false).ToList(), "Id", "descripcion");
             return View(afiliado);
         }
 
@@ -107,6 +110,7 @@ namespace MCGA.WebSite.Controllers
             ViewBag.EstadoCivilId = new SelectList(db.EstadoCivil, "Id", "descripcion", afiliado.EstadoCivilId);
             ViewBag.TipoDocumentoId = new SelectList(db.TipoDocumento, "Id", "descripcion", afiliado.TipoDocumentoId);
             ViewBag.TipoSexoId = new SelectList(db.TipoSexo, "Id", "descripcion", afiliado.TipoSexoId);
+            ViewBag.PlanId = new SelectList(db.Plan.Where(p => p.isdeleted == false).ToList(), "Id", "descripcion");
             return View(afiliado);
         }
 

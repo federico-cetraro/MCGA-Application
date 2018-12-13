@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Listado de Turnos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Reservar Turno", "Create")
 </p>
 <table class="table">
     <tr>
@@ -37,7 +37,7 @@
     {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Fecha)
+            @item.Fecha.ToString("dd/MM/yyyy")
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Hora)

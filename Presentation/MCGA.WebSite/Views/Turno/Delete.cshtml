@@ -40,7 +40,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Observaciones)
+            @Html.Raw(Model.Observaciones)
         </dd>
 
         <dt>
@@ -50,15 +50,6 @@
         <dd>
             @Html.DisplayFor(model => model.Afiliado.Nombre)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EspecialidadesProfesional.createdby)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EspecialidadesProfesional.createdby)
-        </dd>
-
     </dl>
 
     @using (Html.BeginForm()) {
