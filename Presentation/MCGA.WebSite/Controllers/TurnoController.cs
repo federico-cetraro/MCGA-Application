@@ -14,26 +14,30 @@ namespace MCGA.WebSite.Controllers
     [ValidateInput(false)]
     public class TurnoController : Controller
     {
+        readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private MedicureContexto db = new MedicureContexto();
 
         // GET: Turno
+        [Authorize]
         public ActionResult Index()
         {
             var turno = db.Turno.Include(t => t.Afiliado).Include(t => t.EspecialidadesProfesional);
+            logger.Debug("Se accedio al Index de Turnos");
             return View(turno.ToList());
         }
         [Authorize]
         [HttpGet]
         [Route("Turno/_ListadoPDF")]
-        [System.Web.Mvc.AllowAnonymous]
         public ActionResult _ListadoPDF()
         {
             var turno = db.Turno.Include(t => t.Afiliado).Include(t => t.EspecialidadesProfesional);
+            logger.Debug("Se genero un listado de turnos en PDF");
             return View(turno.ToList());
         }
+
         [Authorize]
         [HttpGet]
-        [System.Web.Mvc.AllowAnonymous]
         public ActionResult DescargarListadoPDF() => new ViewAsPdf(@"_ListadoPDF", db.Turno)
         {
             FileName = "Listado-Turnos-Medicos-" + DateTime.Today + ".pdf",
@@ -67,6 +71,7 @@ namespace MCGA.WebSite.Controllers
             ViewBag.AfiliadoId = new SelectList(db.Afiliado, "Id", "Nombre");
             ViewBag.EspecialidadProfesionalId = new SelectList(db.EspecialidadesProfesional.Include(e => e.Especialidad).Include(e => e.Profesional).ToList().Select(o => new { o.Id, Especialidad = string.Format("{0} ({1} {2})", o.Especialidad.descripcion, o.Profesional.Nombre, o.Profesional.Apellido) }).ToList(), "Id", "Especialidad");
             ViewBag.reserva = new SelectList(db.TipoReseva.ToList(), "Id", "descripcion");
+            logger.Debug("Se creo un turno");
             return View();
         }
 
@@ -89,6 +94,7 @@ namespace MCGA.WebSite.Controllers
             ViewBag.AfiliadoId = new SelectList(db.Afiliado, "Id", "Nombre", turno.AfiliadoId);
             ViewBag.EspecialidadProfesionalId = new SelectList(db.EspecialidadesProfesional.Include(e => e.Especialidad).Include(e => e.Profesional).ToList().Select(o => new { o.Id, Especialidad = string.Format("{0} ({1} {2})", o.Especialidad.descripcion, o.Profesional.Nombre, o.Profesional.Apellido) }).ToList(), "Id", "Especialidad");
             ViewBag.reserva = new SelectList(db.TipoReseva.ToList(), "Id", "descripcion");
+            logger.Debug("Se creo un turno");
             return View(turno);
         }
         [ValidateInput(false)]
@@ -142,6 +148,7 @@ namespace MCGA.WebSite.Controllers
             {
                 return HttpNotFound();
             }
+            logger.Debug("Se elimino un turno");
             return View(turno);
         }
 
@@ -163,6 +170,7 @@ namespace MCGA.WebSite.Controllers
             {
                 db.Dispose();
             }
+            logger.Debug("Se elimino un turno");
             base.Dispose(disposing);
         }
     }

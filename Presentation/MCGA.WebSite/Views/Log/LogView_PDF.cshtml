@@ -1,0 +1,24 @@
+﻿@{
+    Layout = null;
+}
+@{
+    string ruta = Server.MapPath("~/logs/log.txt");
+    Stream stream = File.Open(ruta, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+    StreamReader streamReader = new StreamReader(stream);
+    var list = new List<string>();
+    using (var sr = streamReader)
+    {
+        string line;
+        while ((line = sr.ReadLine()) != null)
+        {
+            list.Add(line);
+        }
+    }
+    var str = String.Join("\n", list);
+
+}
+
+<h2>Archivo LOG</h2>
+@DateTime.Today
+<div class="container"><pre>@Html.Raw(str)</pre></div>
+

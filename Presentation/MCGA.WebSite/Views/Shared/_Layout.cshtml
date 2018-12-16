@@ -25,6 +25,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/canvasjs.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
     @*esta linea es la del .css del data toogle*@
     <script src="~/Scripts/umd/popper.min.js"></script>
@@ -62,15 +63,15 @@
         @using Microsoft.AspNet.Identity
         @if (!Request.IsAuthenticated)
         {
-            <div class="collapse navbar-collapse" id="navbarToggler">
-                <div class="container">
-                    <p class="text-center text-light">
-                        Somos un centro asistencial privado, que presta servicios de cuidado y atención en maternidad y patologías clínico-quirúrgicas prevalentes
-                    </p>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="collapse navbar-collapse" id="navbarToggler">
+                    <a class="nav-link" style="color:white">
+                        Bienenidos a la Clinica Especialista Dr. Erick Rosekratzs
+                    </a>
                 </div>
-            </div>
+            </nav>
         }
-        else
+        @if (Request.IsAuthenticated && User.IsInRole("Administrador"))
         {
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container">
@@ -81,7 +82,7 @@
                         <ul class="navbar-nav ml-auto mt-2 mt-lg-0" id="mnuPrincipal">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle item-principal" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    ABMs
+                                    Altas, Bajas y Modificaciones
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="@Url.Action("Index", "Afiliado")">Afiliado</a>
@@ -98,7 +99,9 @@
                                     <a class="dropdown-item" href="@Url.Action("Index", "TipoReseva")">Tipo de reserva</a>
                                     <a class="dropdown-item" href="@Url.Action("Index", "TipoSexo")">Tipo de sexo</a>
                                     <a class="dropdown-item" href="@Url.Action("Index", "Turno")">Turno</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Grafico")">Graficos Clinica</a>
                                     <a class="dropdown-item" href="@Url.Action("DescargarListadoPDF", "Turno")">Listado Secretaria<span class="fc-icon-down-triangle"></span></a>
+                                    <a class="dropdown-item" href="@Url.Action("LogView", "Log")">LOG Servidor<span class="fc-icon-right-double-arrow"></span></a>
                                 </div>
                             </li>
                         </ul>
@@ -106,49 +109,101 @@
                 </div>
             </nav>
         }
+        @if (Request.IsAuthenticated && User.IsInRole("Paciente"))
+        {
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarPrincipal" aria-controls="navbarToggler" aria-expanded="false" aria-label="Navegar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarPrincipal">
+                        <ul class="navbar-nav ml-auto mt-2 mt-lg-0" id="mnuPrincipal">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle item-principal" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Opciones a su Alcance
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Afiliado")">Datos Personales</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Turno")">Reservar Turno</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        }
+        @if (Request.IsAuthenticated && User.IsInRole("Secretaria"))
+         {
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarPrincipal" aria-controls="navbarToggler" aria-expanded="false" aria-label="Navegar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarPrincipal">
+                        <ul class="navbar-nav ml-auto mt-2 mt-lg-0" id="mnuPrincipal">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle item-principal" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Listados
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Afiliado")">Datos de Afiliados</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Turno")">Reservar Turno para Afiliado</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Profesional")">Alta de Profesionales</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Agenda")">Agenda de Profesionales</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", "TipoEspecialidad")">Alta de Especialidades</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Especialidad")">Asociacion de Especialidad</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", "EspecialidadesProfesional")">Especialidades por Profesional</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Grafico")">Graficos Clinica</a>
+                                    <a class="dropdown-item" href="@Url.Action("DescargarListadoPDF", "Turno")">Listado Secretaria<span class="fc-icon-down-triangle"></span></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+         }
     </div>
 
-    <div class="container">
+<div class="container">
+    <div class="body-content">
+        @RenderBody()
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
+@RenderSection("Modal", required: false)
+
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5bb5530a533c67d9"></script>
+<script>
+    $(document).ready(function () {
+        $("div[style='opacity: 0.9; z-index: 2147483647; position: fixed; left: 0px; bottom: 0px; height: 65px; right: 0px; display: block; width: 100%; background-color: #202020; margin: 0px; padding: 0px;']").remove();
+        $("div[style='margin: 0px; padding: 0px; left: 0px; width: 100%; height: 65px; right: 0px; bottom: 0px; display: block; position: fixed; z-index: 2147483647; opacity: 0.9; background-color: rgb(32, 32, 32);']").remove();
+        $("div[onmouseover='S_ssac();']").remove();
+        $("center").remove();
+    });
+</script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+<link href="~/Scripts/jquery-backToTop.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-backToTop.min.js"></script>
+<script>
+    var $button = $.backToTop({ theme: 'fawesome' });
+</script>
+
+<div class="container">
+    <footer>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <div class="body-content">
-            @RenderBody()
+            <p>&copy; @DateTime.Now.Year - MCGA 2018 - UAI - Proyecto Federico A. Cetraro</p>
         </div>
-    </div>
-
-    @*@Scripts.Render("~/bundles/jquery")*@
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-    @RenderSection("Modal", required: false)
-
-    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5bb5530a533c67d9"></script>
-    <script>
-        $(document).ready(function () {
-            $("div[style='opacity: 0.9; z-index: 2147483647; position: fixed; left: 0px; bottom: 0px; height: 65px; right: 0px; display: block; width: 100%; background-color: #202020; margin: 0px; padding: 0px;']").remove();
-            $("div[style='margin: 0px; padding: 0px; left: 0px; width: 100%; height: 65px; right: 0px; bottom: 0px; display: block; position: fixed; z-index: 2147483647; opacity: 0.9; background-color: rgb(32, 32, 32);']").remove();
-            $("div[onmouseover='S_ssac();']").remove();
-            $("center").remove();
-        });
-    </script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-    <link href="~/Scripts/jquery-backToTop.min.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-backToTop.min.js"></script>
-    <script>
-        var $button = $.backToTop({ theme: 'fawesome' });
-    </script>
-
-    <div class="container">
-        <footer>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-            <div class="body-content">
-                <p>&copy; @DateTime.Now.Year - MCGA 2018 - UAI - Proyecto Federico A. Cetraro</p>
-            </div>
-            <a href="https://es-la.facebook.com/uai.elfuturososvos" class="btn btn-sm fa fa-facebook"></a>
-            <a href="https://twitter.com/uainow" class="btn btn-sm fa fa-twitter"></a>
-            <a href="https://ar.linkedin.com/company/uai" class="btn btn-sm fa fa-linkedin"></a>
-            <a href="https://plus.google.com/113155245406425976841" class="btn btn-sm fa fa-google-plus"></a>
-            <a href="https://www.youtube.com/user/UAIelfuturososvos" class="btn btn-sm fa fa-youtube"></a>
-            <a href="https://www.instagram.com/uainow" class="btn btn-sm fa fa-instagram"></a>
-        </footer>
-    </div>
+        <a href="https://es-la.facebook.com/uai.elfuturososvos" class="btn btn-sm fa fa-facebook"></a>
+        <a href="https://twitter.com/uainow" class="btn btn-sm fa fa-twitter"></a>
+        <a href="https://ar.linkedin.com/company/uai" class="btn btn-sm fa fa-linkedin"></a>
+        <a href="https://plus.google.com/113155245406425976841" class="btn btn-sm fa fa-google-plus"></a>
+        <a href="https://www.youtube.com/user/UAIelfuturososvos" class="btn btn-sm fa fa-youtube"></a>
+        <a href="https://www.instagram.com/uainow" class="btn btn-sm fa fa-instagram"></a>
+    </footer>
+</div>
 
 </body>
 </html>

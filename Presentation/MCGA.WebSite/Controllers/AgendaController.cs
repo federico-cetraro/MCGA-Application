@@ -15,10 +15,13 @@ namespace MCGA.WebSite.Controllers
     [Authorize]
     public class AgendaController : Controller
     {
+        readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private MedicureContexto db = new MedicureContexto();
 
         public JsonResult GetFechasDisponiblesByIdEspecialidadProfesional(int idEspecialidadProfesional = 0)
         {
+            logger.Debug("Se consultaron fechas de profesionales por especialidad");
             List<Agenda> listAgenda = db.Agenda.Include(a => a.EspecialidadesProfesional).Include(a => a.TipoDia).Where(a => a.isdeleted == false).ToList().Where(o => o.EspecialidadProfesionalId == idEspecialidadProfesional && o.AgendaCancelacion.Count == 0 && o.fecha_hasta>=DateTime.UtcNow).ToList();
             if (listAgenda.Count > 0)
             {
@@ -57,6 +60,7 @@ namespace MCGA.WebSite.Controllers
 
         public JsonResult GetHorarioDisponiblesByIdEspecialidadProfesionalFecha(int idEspecialidadProfesional, DateTime fecha)
         {
+            logger.Debug("Se consultaron horarios de profesionales por fecha");
             int tipoDiaId = db.TipoDia.ToList().Where(o => o.descripcion.ToUpper() == fecha.DayOfWeek.ToString().ToUpper()).FirstOrDefault().Id;
             Agenda agenda = db.Agenda.Include(a => a.EspecialidadesProfesional).Include(a => a.TipoDia).Where(a => a.isdeleted == false).ToList().Where(o => o.EspecialidadProfesionalId == idEspecialidadProfesional && o.TipoDiaId == tipoDiaId && fecha >= o.fecha_desde && fecha <= o.fecha_hasta && o.AgendaCancelacion.Count == 0).FirstOrDefault();
             if (agenda != null)
@@ -85,6 +89,7 @@ namespace MCGA.WebSite.Controllers
         // GET: Agenda
         public ActionResult Index()
         {
+            ViewBag.EspecialidadProfesionalId = db.EspecialidadesProfesional.Include(e => e.Especialidad).Include(e => e.Profesional).ToList().Select(o => new { o.Id, Especialidad = string.Format("{0} ({1} {2})", o.Especialidad.descripcion, o.Profesional.Nombre, o.Profesional.Apellido)}).ToList();
             var agenda = db.Agenda.Include(a => a.EspecialidadesProfesional).Include(a => a.TipoDia);
             return View(agenda.ToList());
         }
@@ -109,6 +114,7 @@ namespace MCGA.WebSite.Controllers
         {
             ViewBag.EspecialidadProfesionalId = new SelectList(db.EspecialidadesProfesional.Include(e => e.Especialidad).Include(e => e.Profesional).ToList().Select(o => new { o.Id, Especialidad = string.Format("{0} ({1} {2})", o.Especialidad.descripcion, o.Profesional.Nombre, o.Profesional.Apellido) }).ToList(), "Id", "Especialidad");
             ViewBag.TipoDiaId = new SelectList(db.TipoDia, "Id", "descripcion");
+            logger.Debug("Se creo una agenda");
             return View();
         }
 
@@ -128,6 +134,7 @@ namespace MCGA.WebSite.Controllers
 
             ViewBag.EspecialidadProfesionalId = new SelectList(db.EspecialidadesProfesional.Include(e => e.Especialidad).Include(e => e.Profesional).ToList().Select(o => new { o.Id, Especialidad = string.Format("{0} ({1} {2})", o.Especialidad.descripcion, o.Profesional.Nombre, o.Profesional.Apellido) }).ToList(), "Id", "Especialidad");
             ViewBag.TipoDiaId = new SelectList(db.TipoDia, "Id", "descripcion", agenda.TipoDiaId);
+            logger.Debug("Se creo una agenda");
             return View(agenda);
         }
 

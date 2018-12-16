@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Graficos de Turnos";
+}
+
+<h2>Informacion de Clinica</h2>
+
+<div id="chartContainer" class="body-content" style="width: 100%; height: 400px;display: inline-block;"></div><br/>
+
+<div id="chartContainer2" class="body-content" style="width: 100%; height: 400px;display: inline-block;"></div><br/>
+
+@section Scripts{
+<script>
+
+    window.onload = function () {
+        var chart = new CanvasJS.Chart("chartContainer", {
+            theme: "light2",
+            exportEnabled: true,
+            animationEnabled: true,
+            title: {
+                text: "Turnos por Especialidad"
+            },
+            data: [
+                {
+                    type: "column", 
+                    
+                    dataPoints: [{ y: 3, label: "Asistencia Fertilizacion" },
+                                 { y: 1, label: "Cuidados Neonatos" },
+                                 { y: 1, label: "RCP Neonatales" },
+                                 { y: 1, label: "Cirugia Ginecologica" },
+                                 { y: 4, label: "Especislitas Recien Nacidos" }
+                    ]
+                }
+            ]
+        });
+
+        chart.render();
+
+        var chart2 = new CanvasJS.Chart("chartContainer2", {
+            theme: "light2",
+            exportEnabled: true,
+            animationEnabled: true,
+            title: {
+                text: "Turnos por Profesional"
+            },
+            data: [
+                {
+                    type: "pie",
+
+                    dataPoints: [
+                        { y: 4, indexLabel: "Nick Riviera" },
+                        { y: 1, indexLabel: "Jorge Gonzalez" },
+                        { y: 1, indexLabel: "Elizabeth Ronald" },
+                        { y: 2, indexLabel: "Guadalupe Smith" },
+                        { y: 3, indexLabel: "Jose Perez" },
+                    ]
+                }
+            ]
+        });
+
+            chart2.render();
+            
+    };
+
+</script>
+}

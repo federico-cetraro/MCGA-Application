@@ -4,18 +4,15 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Asociacion de Especialidades</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Asociar Especialidad", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.frecuencia)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TipoEspecialidad.descripcion)
@@ -27,9 +24,6 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.frecuencia)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TipoEspecialidad.descripcion)

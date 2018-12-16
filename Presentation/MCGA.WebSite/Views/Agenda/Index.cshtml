@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<MCGA.Data.Agenda>
-
 @{
     ViewBag.Title = "Index";
 }
@@ -11,6 +10,12 @@
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.Raw("Profesional")
+        </th>
+        <th>
+            @Html.Raw("Especialidad")
+        </th>
         <th>
             @Html.Raw("Desde")
         </th>
@@ -29,8 +34,16 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
     <tr>
+        <td>
+            @item.EspecialidadesProfesional.Profesional.Nombre
+            @item.EspecialidadesProfesional.Profesional.Apellido
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EspecialidadesProfesional.Especialidad.descripcion)
+        </td>
         <td>
             @item.fecha_desde.ToString("dd/MM/yyyy")
         </td>
@@ -47,11 +60,11 @@
             @Html.DisplayFor(modelItem => item.TipoDia.descripcion)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
         </td>
     </tr>
-}
+    }
 
 </table>

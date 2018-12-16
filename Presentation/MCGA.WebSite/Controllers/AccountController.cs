@@ -16,6 +16,8 @@ namespace MCGA.WebSite.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -60,9 +62,11 @@ namespace MCGA.WebSite.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
+            logger.Debug("Usuaro inicio sesion");
             return View();
-        }
 
+        }
+        
         //
         // POST: /Account/Login
         [HttpPost]
@@ -328,9 +332,11 @@ namespace MCGA.WebSite.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {
+            logger.Debug("Usuario logueado mediante proveedor externo");
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
             if (loginInfo == null)
             {
+                logger.Debug("Usuario logueado mediante proveedor externo");
                 return RedirectToAction("Login");
             }
 
@@ -339,6 +345,7 @@ namespace MCGA.WebSite.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    logger.Debug("Usuario logueado mediante proveedor externo");
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -403,6 +410,7 @@ namespace MCGA.WebSite.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            logger.Debug("Usuario se desloguea");
             return RedirectToAction("Index", "Home");
         }
 
@@ -411,6 +419,7 @@ namespace MCGA.WebSite.Controllers
         [AllowAnonymous]
         public ActionResult ExternalLoginFailure()
         {
+            logger.Debug("Inicio de sesion con proveedor externo fallo");
             return View();
         }
 

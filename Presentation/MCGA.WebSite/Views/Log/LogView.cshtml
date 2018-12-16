@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "LOG Servidor";
+}
+@{
+    string ruta = Server.MapPath("~/logs/log.txt");
+    Stream stream = File.Open(ruta, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+    StreamReader streamReader = new StreamReader(stream);
+    var list = new List<string>();
+    using (var sr = streamReader)
+    {
+        string line;
+        while ((line = sr.ReadLine()) != null)
+        {
+            list.Add(line);
+        }
+    }
+    var str = String.Join("\n", list);
+    
+}
+
+<h2>Archivo LOG</h2>
+
+<button class="btn"><i class="fa fa-download"></i><a href="@Url.Action("DescargarLogPDF", "Log")"> Descargar Log a PDF</a></button>
+<div class="container" style="max-height:600px; overflow-y:scroll"><pre>@Html.Raw(str)</pre></div>
+
