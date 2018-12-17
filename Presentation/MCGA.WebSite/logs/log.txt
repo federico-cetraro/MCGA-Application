@@ -157,3 +157,206 @@ DEBUG 2018-12-16 01:32:15,905 85918ms AccountController      MoveNext           
 DEBUG 2018-12-16 01:32:15,918 85931ms HomeController         Index              - Iniciando Index en Home Controller
 DEBUG 2018-12-16 01:32:15,918 85931ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
 DEBUG 2018-12-16 01:32:15,919 85932ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 02:36:31,883  1126ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-16 02:36:31,925  1167ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 02:36:31,931  1174ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 02:36:42,952 12195ms AccountController      Login              - Usuaro inicio sesion
+DEBUG 2018-12-16 02:36:56,473 25716ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-16 02:36:56,477 25720ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 02:36:56,477 25720ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 02:37:01,716 30959ms TurnoController        Index              - Se accedio al Index de Turnos
+DEBUG 2018-12-16 02:37:12,482 41724ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 02:47:09,254 638496ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-16 02:47:09,255 638497ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 02:47:09,258 638500ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 02:49:53,105 802348ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-16 02:49:53,107 802350ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 02:49:53,107 802350ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 02:50:00,527 809770ms TurnoController        Index              - Se accedio al Index de Turnos
+DEBUG 2018-12-16 02:50:00,786 810028ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 02:50:09,899 819142ms TurnoController        Index              - Se accedio al Index de Turnos
+DEBUG 2018-12-16 02:50:09,949 819192ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 02:52:43,700 972943ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-16 02:52:43,704 972947ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 02:52:43,705 972948ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 02:54:06,492 1055735ms AccountController      LogOff             - Usuario se desloguea
+DEBUG 2018-12-16 02:54:06,504 1055747ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-16 02:54:06,505 1055748ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 02:54:06,506 1055749ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 02:54:09,405 1058648ms AccountController      Login              - Usuaro inicio sesion
+DEBUG 2018-12-16 02:54:13,436 1062679ms AccountController      MoveNext           - Usuario logueado mediante proveedor externo
+DEBUG 2018-12-16 02:54:13,578 1062821ms AccountController      MoveNext           - Usuario logueado mediante proveedor externo
+DEBUG 2018-12-16 02:54:13,594 1062837ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-16 02:54:13,595 1062838ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 02:54:13,596 1062839ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 03:02:03,766 1533008ms TurnoController        Index              - Se accedio al Index de Turnos
+DEBUG 2018-12-16 03:02:12,888 1542131ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:02:19,669 1548912ms TurnoController        Create             - Se creo un turno
+DEBUG 2018-12-16 03:02:19,774 1549017ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:03:38,542 1627785ms TurnoController        Create             - Se creo un turno
+DEBUG 2018-12-16 03:03:44,348 1633590ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:07:42,663  1644ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:07:46,800  5781ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-16 03:07:46,815  5796ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 03:07:46,818  5800ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 03:08:03,675 22657ms AccountController      Login              - Usuaro inicio sesion
+DEBUG 2018-12-16 03:08:47,324 66306ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-16 03:08:47,326 66307ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 03:08:47,327 66308ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 03:08:51,646 70628ms TurnoController        Index              - Se accedio al Index de Turnos
+DEBUG 2018-12-16 03:09:01,441 80422ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:09:05,831 84813ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:10:51,801  2074ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:11:29,818 40091ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-16 03:11:29,832 40105ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 03:11:29,838 40111ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 03:11:47,584 57857ms AccountController      Login              - Usuaro inicio sesion
+DEBUG 2018-12-16 03:12:04,526 74799ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-16 03:12:04,526 74799ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 03:12:04,527 74800ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 03:12:09,385 79658ms TurnoController        Index              - Se accedio al Index de Turnos
+DEBUG 2018-12-16 03:12:19,151 89424ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:12:28,756 99029ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:15:30,160  1743ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-16 03:15:30,215  1798ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 03:15:30,228  1811ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 03:15:58,218 29801ms TurnoController        Index              - Se accedio al Index de Turnos
+DEBUG 2018-12-16 03:16:09,279 40863ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:20:33,812  4648ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-16 03:20:33,852  4688ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 03:20:33,857  4693ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 03:20:44,481 15317ms TurnoController        Index              - Se accedio al Index de Turnos
+DEBUG 2018-12-16 03:20:48,545 19381ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:21:45,729 76565ms TurnoController        Create             - Se creo un turno
+DEBUG 2018-12-16 03:21:47,094 77930ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:22:04,256 95091ms AgendaController       ialidadProfesional - Se consultaron fechas de profesionales por especialidad
+DEBUG 2018-12-16 03:22:06,721 97557ms AgendaController       adProfesionalFecha - Se consultaron horarios de profesionales por fecha
+DEBUG 2018-12-16 03:23:18,987 169822ms TurnoController        Index              - Se accedio al Index de Turnos
+DEBUG 2018-12-16 03:23:29,657 180493ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:23:39,853 190688ms TurnoController        Create             - Se creo un turno
+DEBUG 2018-12-16 03:23:40,054 190889ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:25:44,668  4129ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-16 03:25:44,718  4179ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 03:25:44,722  4183ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 03:26:02,087 21548ms TurnoController        Index              - Se accedio al Index de Turnos
+DEBUG 2018-12-16 03:26:04,627 24088ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:26:09,177 28638ms TurnoController        Create             - Se creo un turno
+DEBUG 2018-12-16 03:26:10,871 30331ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:26:21,808 41269ms AgendaController       ialidadProfesional - Se consultaron fechas de profesionales por especialidad
+DEBUG 2018-12-16 03:26:24,334 43795ms AgendaController       adProfesionalFecha - Se consultaron horarios de profesionales por fecha
+DEBUG 2018-12-16 03:27:37,497 116958ms TurnoController        Create             - Se creo un turno
+DEBUG 2018-12-16 03:27:45,594 125055ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:27:53,918 133379ms AgendaController       ialidadProfesional - Se consultaron fechas de profesionales por especialidad
+DEBUG 2018-12-16 03:27:55,035 134496ms AgendaController       adProfesionalFecha - Se consultaron horarios de profesionales por fecha
+DEBUG 2018-12-16 03:28:08,777 148238ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:28:08,797 148258ms TurnoController        Index              - Se accedio al Index de Turnos
+DEBUG 2018-12-16 03:28:08,934 148395ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:28:42,921 182382ms TurnoController        Index              - Se accedio al Index de Turnos
+DEBUG 2018-12-16 03:28:51,424 190885ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:29:04,793 204254ms AccountController      LogOff             - Usuario se desloguea
+DEBUG 2018-12-16 03:29:04,829 204290ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-16 03:29:04,830 204291ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 03:29:04,831 204292ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 03:29:07,912 207373ms AccountController      Login              - Usuaro inicio sesion
+DEBUG 2018-12-16 03:29:20,999 220460ms AccountController      MoveNext           - Usuario logueado mediante proveedor externo
+DEBUG 2018-12-16 03:29:23,676 223137ms AccountController      MoveNext           - Usuario logueado mediante proveedor externo
+DEBUG 2018-12-16 03:29:23,705 223166ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-16 03:29:23,706 223167ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 03:29:23,708 223169ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 03:29:27,705 227166ms TurnoController        Index              - Se accedio al Index de Turnos
+DEBUG 2018-12-16 03:29:27,728 227189ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:29:31,180 230641ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:29:36,815 236276ms TurnoController        Index              - Se accedio al Index de Turnos
+DEBUG 2018-12-16 03:29:36,860 236321ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:30:21,415 280876ms TurnoController        Create             - Se creo un turno
+DEBUG 2018-12-16 03:30:21,707 281168ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:31:00,817 320278ms TurnoController        Index              - Se accedio al Index de Turnos
+DEBUG 2018-12-16 03:31:00,865 320326ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:32:09,672 389133ms AccountController      LogOff             - Usuario se desloguea
+DEBUG 2018-12-16 03:32:09,685 389146ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-16 03:32:09,686 389147ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 03:32:09,688 389149ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 03:32:13,459 392920ms AccountController      Login              - Usuaro inicio sesion
+DEBUG 2018-12-16 03:32:48,436 427897ms AccountController      Login              - Usuaro inicio sesion
+DEBUG 2018-12-16 03:32:54,789 434250ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-16 03:32:54,790 434251ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 03:32:54,791 434252ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 03:33:27,529 466990ms TurnoController        Index              - Se accedio al Index de Turnos
+DEBUG 2018-12-16 03:33:27,568 467029ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:33:32,791 472252ms TurnoController        Delete             - Se elimino un turno
+DEBUG 2018-12-16 03:33:32,893 472354ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:33:34,611 474072ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:33:34,669 474130ms TurnoController        Index              - Se accedio al Index de Turnos
+DEBUG 2018-12-16 03:33:34,692 474153ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:33:52,060 491521ms TurnoController        Index              - Se accedio al Index de Turnos
+DEBUG 2018-12-16 03:33:52,088 491549ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:33:54,143 493604ms TurnoController        Create             - Se creo un turno
+DEBUG 2018-12-16 03:33:54,259 493720ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:34:04,552 504013ms AgendaController       ialidadProfesional - Se consultaron fechas de profesionales por especialidad
+DEBUG 2018-12-16 03:34:06,790 506251ms AgendaController       adProfesionalFecha - Se consultaron horarios de profesionales por fecha
+DEBUG 2018-12-16 03:34:14,549 514010ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:34:14,565 514025ms TurnoController        Index              - Se accedio al Index de Turnos
+DEBUG 2018-12-16 03:34:14,595 514055ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:35:33,160 592621ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 03:35:46,326 605787ms AccountController      LogOff             - Usuario se desloguea
+DEBUG 2018-12-16 03:35:46,341 605802ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-16 03:35:46,341 605802ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 03:35:46,342 605803ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 03:38:46,590 786051ms AccountController      Login              - Usuaro inicio sesion
+DEBUG 2018-12-16 03:38:53,406 792867ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-16 03:38:53,408 792869ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 03:38:53,409 792870ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 03:39:59,874 859335ms AccountController      LogOff             - Usuario se desloguea
+DEBUG 2018-12-16 03:39:59,883 859344ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-16 03:39:59,885 859346ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 03:39:59,888 859348ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 03:40:02,856 862317ms AccountController      Login              - Usuaro inicio sesion
+DEBUG 2018-12-16 03:40:11,539 871000ms AccountController      Login              - Usuaro inicio sesion
+DEBUG 2018-12-16 15:08:42,728  1148ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-16 15:08:42,766  1186ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 15:08:42,770  1190ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 15:08:51,205  9626ms AccountController      Login              - Usuaro inicio sesion
+DEBUG 2018-12-16 15:10:11,845 90266ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-16 15:10:11,847 90268ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 15:10:11,847 90268ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 15:12:05,720 204141ms TurnoController        Index              - Se accedio al Index de Turnos
+DEBUG 2018-12-16 15:12:10,913 209334ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 15:12:15,600 214021ms TurnoController        Create             - Se creo un turno
+DEBUG 2018-12-16 15:12:16,510 214931ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 15:12:31,107 229528ms AgendaController       ialidadProfesional - Se consultaron fechas de profesionales por especialidad
+DEBUG 2018-12-16 15:12:37,133 235553ms AgendaController       adProfesionalFecha - Se consultaron horarios de profesionales por fecha
+DEBUG 2018-12-16 15:12:50,103 248524ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 15:12:50,113 248534ms TurnoController        Index              - Se accedio al Index de Turnos
+DEBUG 2018-12-16 15:12:50,136 248557ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-16 15:13:04,524 262944ms AccountController      LogOff             - Usuario se desloguea
+DEBUG 2018-12-16 15:13:04,533 262953ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-16 15:13:04,533 262953ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 15:13:04,534 262954ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 18:31:37,616  3902ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-16 18:31:37,658  3944ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 18:31:37,663  3949ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 18:49:48,475 1094761ms AccountController      Login              - Usuaro inicio sesion
+DEBUG 2018-12-16 18:50:03,369 1109655ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-16 18:50:03,370 1109656ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 18:50:03,371 1109657ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-16 20:12:39,701 6065987ms TurnoController        Index              - Se accedio al Index de Turnos
+DEBUG 2018-12-16 20:12:39,973 6066259ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-17 00:39:32,108  3965ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-17 00:39:32,159  4016ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-17 00:39:32,162  4019ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-17 00:42:28,531 180388ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-17 00:42:28,532 180389ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-17 00:42:28,533 180390ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-17 00:42:34,395 186252ms AccountController      LogOff             - Usuario se desloguea
+DEBUG 2018-12-17 00:42:34,414 186271ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-17 00:42:34,416 186273ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-17 00:42:34,416 186273ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-17 00:42:37,671 189528ms AccountController      Login              - Usuaro inicio sesion
+DEBUG 2018-12-17 00:42:51,395 203252ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-17 00:42:51,395 203252ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-17 00:42:51,395 203252ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-17 00:43:12,956 224813ms TurnoController        Dispose            - Se elimino un turno
+DEBUG 2018-12-17 00:43:26,127 237984ms AccountController      LogOff             - Usuario se desloguea
+DEBUG 2018-12-17 00:43:26,135 237992ms HomeController         Index              - Iniciando Index en Home Controller
+DEBUG 2018-12-17 00:43:26,136 237993ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP
+DEBUG 2018-12-17 00:43:26,137 237994ms CompressAttribute      OnResultExecuting  - El compresor esta funcionando mediante GZIP

@@ -23,6 +23,7 @@ namespace MCGA.WebSite.Controllers
         public ActionResult Index()
         {
             var turno = db.Turno.Include(t => t.Afiliado).Include(t => t.EspecialidadesProfesional);
+            Afiliado afiliado = db.Afiliado.Include(a => a.EstadoCivil).Include(a => a.Plan).Include(a => a.TipoDocumento).Include(a => a.TipoSexo).Where(a => a.isdeleted == false).ToList().Where(o => o.Email == User.Identity.Name).FirstOrDefault();
             logger.Debug("Se accedio al Index de Turnos");
             return View(turno.ToList());
         }
@@ -47,6 +48,10 @@ namespace MCGA.WebSite.Controllers
           " --footer-line --footer-font-size \"12\" --footer-spacing 1 --footer-font-name \"Segoe UI\"",
             PageMargins = { Left = 20, Bottom = 20, Right = 20, Top = 20 }
         };
+
+
+
+
         [ValidateInput(false)]
         // GET: Turno/Details/5
         public ActionResult Details(int? id)
@@ -69,6 +74,9 @@ namespace MCGA.WebSite.Controllers
         public ActionResult Create()
         {
             ViewBag.AfiliadoId = new SelectList(db.Afiliado, "Id", "Nombre");
+            Afiliado afiliado = db.Afiliado.Include(a => a.EstadoCivil).Include(a => a.Plan).Include(a => a.TipoDocumento).Include(a => a.TipoSexo).Where(a => a.isdeleted == false).ToList().Where(o => o.Email == User.Identity.Name).FirstOrDefault();
+            ViewBag.AfiliadoLogueadoId = afiliado.Id.ToString();
+            ViewBag.AfiliadoLogueadoNombreApellido = string.Format("{0} {1} Nº {2} ({3} {4})", afiliado.Nombre, afiliado.Apellido, afiliado.NumeroAfiliado, afiliado.TipoDocumento.descripcion, afiliado.Numero);
             ViewBag.EspecialidadProfesionalId = new SelectList(db.EspecialidadesProfesional.Include(e => e.Especialidad).Include(e => e.Profesional).ToList().Select(o => new { o.Id, Especialidad = string.Format("{0} ({1} {2})", o.Especialidad.descripcion, o.Profesional.Nombre, o.Profesional.Apellido) }).ToList(), "Id", "Especialidad");
             ViewBag.reserva = new SelectList(db.TipoReseva.ToList(), "Id", "descripcion");
             logger.Debug("Se creo un turno");

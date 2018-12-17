@@ -4,39 +4,55 @@
 }
 
 <h2>Create</h2>
-
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Turno</h4>
+        <hr />
 
-<div class="form-horizontal">
-    <h4>Turno</h4>
-    <hr />
-
-    @Html.LabelFor(model => model.AfiliadoId, null, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-10">
-        @Html.TextBox("BuscarAfiliado", null,
-        new
+        @if (User.IsInRole("Paciente"))
         {
-            @class = "form-control",
-            autocomplete = "off",
-            placeholder = "Ingrese el afiliado",
-        })
-        @Html.ValidationMessageFor(model => model.AfiliadoId, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.AfiliadoId)
+            @Html.LabelFor(model => model.AfiliadoId, null, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("BuscarAfiliado", (string)ViewBag.AfiliadoLogueadoNombreApellido,
+             new
+             {
+                 @class = "form-control disabled",
+                 autocomplete = "off",
+                 placeholder = "Ingrese el afiliado",
+                 @readonly = "readonly"
+             })
+                @Html.Hidden("AfiliadoId", (string)ViewBag.AfiliadoLogueadoId)
+            </div>
+        }
+        else
+        {
+            @Html.LabelFor(model => model.AfiliadoId, null, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("BuscarAfiliado", null,
+             new
+             {
+                 @class = "form-control",
+                 autocomplete = "off",
+                 placeholder = "Ingrese el afiliado",
+             })
+                @Html.ValidationMessageFor(model => model.AfiliadoId, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.AfiliadoId)
+            </div>
+        }
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.EspecialidadProfesionalId, "EspecialidadProfesional", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.TextBox("BuscarEspecialidad", null,
-            new
-            {
-                @class = "form-control",
-                autocomplete = "off",
-                placeholder = "Ingrese la especialidad",
-            })
+         new
+         {
+             @class = "form-control",
+             autocomplete = "off",
+             placeholder = "Ingrese la especialidad",
+         })
             @Html.Hidden("EspecialidadId")
         </div>
     </div>
@@ -44,12 +60,12 @@
         @Html.Label("Profesional", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.TextBox("BuscarProfesional", null,
-            new
-            {
-                @class = "form-control",
-                autocomplete = "off",
-                placeholder = "Ingrese el profesional",
-            })
+         new
+         {
+             @class = "form-control",
+             autocomplete = "off",
+             placeholder = "Ingrese el profesional",
+         })
             @Html.ValidationMessageFor(model => model.EspecialidadProfesionalId, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.EspecialidadProfesionalId)
         </div>
@@ -87,28 +103,28 @@
             <input type="submit" value="Create" class="btn btn-default" />
         </div>
     </div>
-</div>
+
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
 
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/jquery")
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/jquery")
 
 
-    <script src="~/Scripts/tinymce/tinymce.min.js"></script>
-    <script src="~/Scripts/tinymce/jquery.tinymce.min.js"></script>
-    <script>
-        tinymce.init({
-            selector: "div#Observaciones",
+        <script src="~/Scripts/tinymce/tinymce.min.js"></script>
+        <script src="~/Scripts/tinymce/jquery.tinymce.min.js"></script>
+        <script>
+            tinymce.init({
+                selector: "div#Observaciones",
 
-        });
-    </script>
-    <script>
+            });
+        </script>
+        <script>
         $("#BuscarEspecialidad").autocomplete({
             autoSelect: true,
             autoFocus: true,
@@ -148,7 +164,7 @@
                 });
             },
             select: function (event, ui) {
-               
+
                 $("#EspecialidadProfesionalId").val(ui.item.Id);
                 //Cargar fecha disponible del profesional especialidad
                 CargarFechasDisponibles($("#EspecialidadProfesionalId").val());
@@ -175,7 +191,7 @@
             }
         });
 
-         
+
         function CargarFechasDisponibles(idEspecialidadProfesional) {
             $.ajax({
                 url: '@Url.Action("GetFechasDisponiblesByIdEspecialidadProfesional", "Agenda")',
@@ -204,7 +220,7 @@
             });
         }
         function CargarHorarioDisponibles(idEspecialidadProfesional, fechaString) {
-           
+
             var listFecha = fechaString.split("/");
             var fecha = new Date(listFecha[2], listFecha[1] - 1, listFecha[0]);
             $.ajax({
@@ -213,7 +229,7 @@
                 async:false,
                 data: { idEspecialidadProfesional: idEspecialidadProfesional, fecha: moment(fecha).format("YYYY-MM-DD")},
                 success: function (data) {
-                   
+
                     var datos = data;
                     $("#cboHorario").empty();
                     for (var i = 0; i < datos.length; i++) {
@@ -226,7 +242,7 @@
                 }
             });
         }
-    </script>
-}
+        </script>
+    }
 
 
